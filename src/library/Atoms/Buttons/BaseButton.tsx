@@ -1,13 +1,14 @@
 import React from "react";
 import { BoxProps, TextProps } from "@shopify/restyle";
 import { ActivityIndicator, TouchableHighlight } from "react-native";
-import { Theme } from "../../../theme";
+import { Theme } from "../../theme";
 import Box from "../Box/Box";
 import Text from "../Text/Text";
 
 type ButtonProps = {
   onPress: () => void;
   loading?: boolean;
+  text: string;
   textProps?: TextProps<Theme>;
 } & Partial<BoxProps<Theme>>;
 
@@ -15,26 +16,24 @@ const Button: React.FC<ButtonProps> = ({
   children,
   onPress,
   loading,
+  text,
   textProps,
   ...props
 }) => (
   <TouchableHighlight underlayColor="transparent" onPress={onPress}>
     <Box
-      py="m"
-      px="xl"
+      py="s"
+      px="m"
       backgroundColor="primary"
-      borderRadius={8}
-      shadowOffset={{ height: 2, width: 0 }}
-      shadowRadius={5}
-      shadowColor="black"
-      shadowOpacity={0.2}
+      alignSelf="center"
+      borderRadius={20}
       {...props}
     >
       {loading ? (
         <ActivityIndicator color="white" />
       ) : (
-        <Text color="white" ID="button-text">
-          {children}
+        <Text variant="alt" ID="button-text">
+          {text}
         </Text>
       )}
     </Box>
