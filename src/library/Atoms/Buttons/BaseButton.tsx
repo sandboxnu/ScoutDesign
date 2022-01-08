@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({
     <Box
       py="s"
       px="m"
-      backgroundColor="primary"
+      backgroundColor="brandAction"
       alignSelf="center"
       borderRadius={20}
       {...props}
