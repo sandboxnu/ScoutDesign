@@ -14,19 +14,23 @@ import {
   BackgroundColorProps,
 } from "@shopify/restyle";
 
+export interface PressableProps {
+  accessibilityLabel: string;
+  disabled?: boolean;
+  onPress: (nativeEvent: GestureResponderEvent) => void;
+  onLongPress?: (nativeEvent: GestureResponderEvent) => void;
+}
+
 const restyleFunctions = [spacing, border, backgroundColor];
 type Props = SpacingProps<Theme> &
   BorderProps<Theme> &
-  BackgroundColorProps<Theme> & {
-    disabled?: boolean;
-    nativeID: string;
-    onPress: (nativeEvent: GestureResponderEvent) => void;
-    onLongPress?: (nativeEvent: GestureResponderEvent) => void;
+  BackgroundColorProps<Theme> &
+  PressableProps & {
     children: any;
   };
 
 const Pressable = ({
-  nativeID,
+  accessibilityLabel,
   disabled = false,
   onPress,
   onLongPress,
@@ -41,7 +45,7 @@ const Pressable = ({
       onLongPress={onLongPress}
       hitSlop={8}
       disabled={disabled}
-      nativeID={nativeID}
+      nativeID={accessibilityLabel}
       style={({ pressed }: { pressed: boolean }) => [
         disabled ? { backgroundColor: "#ccc" } : undefined,
         { opacity: pressed ? 0.4 : 1 },

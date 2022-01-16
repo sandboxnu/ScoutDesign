@@ -3,26 +3,25 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { BoxProps, TextProps } from "@shopify/restyle";
 import theme, { Theme } from "../../../theme";
-import Pressable from "../../Utility/Pressable/Pressable";
+import Pressable, { PressableProps } from "../../Utility/Pressable/Pressable";
 import Text from "../Text/Text";
 import Icon, { IconPayload } from "../Assets/Icon/Icon";
 import CircleButton from "./CircleButton";
 
-type ButtonProps = {
-  accessibilityLabel: string;
-  onPress: () => void;
+interface ButtonProps extends PressableProps {
   text?: string;
   textColor?: keyof typeof theme.colors;
   backgroundColor?: keyof typeof theme.colors;
   icon?: IconPayload;
-
   fullWidth?: boolean;
   gradient?: boolean;
   animated?: boolean;
-} & TextProps<Theme> &
-  Partial<BoxProps<Theme>>;
+  children?: React.ReactNode;
+}
 
-const Button: React.FC<ButtonProps> = ({
+type Props = ButtonProps & TextProps<Theme> & Partial<BoxProps<Theme>> & {};
+
+const Button: React.FC<Props> = ({
   children,
   accessibilityLabel,
   onPress,
@@ -34,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   fullWidth,
   gradient,
   ...props
-}) => {
+}: Props) => {
   if (icon && icon.isValid() && !text) {
     return (
       <CircleButton
@@ -48,7 +47,7 @@ const Button: React.FC<ButtonProps> = ({
   }
   if (gradient) {
     return (
-      <Pressable nativeID={accessibilityLabel} onPress={onPress}>
+      <Pressable accessibilityLabel={accessibilityLabel} onPress={onPress}>
         <LinearGradient
           colors={["rgba(23, 161, 101, 0.095)", "rgba(104, 237, 180, 0.065)"]}
           start={{ x: 0.5, y: 1 }}
@@ -89,7 +88,7 @@ const Button: React.FC<ButtonProps> = ({
   } else {
     return (
       <Pressable
-        nativeID={accessibilityLabel}
+        accessibilityLabel={accessibilityLabel}
         onPress={onPress}
         marginVertical="xs"
         paddingHorizontal="l"
