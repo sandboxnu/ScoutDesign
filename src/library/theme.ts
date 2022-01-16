@@ -4,8 +4,8 @@ const palette = {
   sunglowYellow: "#FFCC00",
   mustardYellow: "#FFD633",
   crayolaYellow: "#FFEB99",
-  tangerineOrange: "#F18A13",
-  yelorannge: "#F9A94E",
+  darkOrange: "#F7951D",
+  yellorange: "#FAAC38",
   lightPeach: "#FFDCAD",
   crimsonRed: "#C92238",
   amaranth: "#DD4055",
@@ -36,17 +36,17 @@ const palette = {
 
 const theme = createTheme({
   colors: {
-    brandActionLight: palette.darkSpringGreen,
+    brandActionLight: palette.aquamarine,
     brandAction: palette.pantoneGreen,
-    brandActionDark: palette.aquamarine,
+    brandActionDark: palette.darkSpringGreen,
 
     brandInactionLight: palette.lemonCurryBrown,
     brandInaction: palette.bisterBrown,
     brandInactionDark: palette.darkOliveBrown,
 
     questionLight: palette.lightPeach,
-    question: palette.yelorannge,
-    questionDark: palette.tangerineOrange,
+    question: palette.yellorange,
+    questionDark: palette.darkOrange,
 
     answerLight: palette.tuftsBlue,
     answer: palette.brightNavy,
@@ -72,49 +72,121 @@ const theme = createTheme({
     white: palette.white,
   },
   spacing: {
+    xs: 4,
     s: 8,
     m: 16,
     l: 24,
     xl: 40,
+    xxl: 96,
+  },
+  assetSizes: {
+    xs: 10,
+    sm: 14,
+    md: 24,
+    lg: 96,
   },
   breakpoints: {
     phone: 0,
     tablet: 768,
   },
   textVariants: {
-    micro: {
-      fontSize: 10,
-      lineHeight: 10,
-      color: "black",
+    h1: {
+      fontSize: 36,
+      lineHeight: 45,
+      fontFamily: "metropolis-black",
+      fontWeight: "bold",
     },
-    light: {
-      fontSize: 16,
-      lineHeight: 20,
-      color: "black",
+    h2: {
+      fontSize: 27,
+      lineHeight: 36,
+      fontFamily: "metropolis-bold",
+      fontWeight: "bold",
     },
-    body: {
-      fontSize: 16,
-      lineHeight: 24,
-      color: "black",
-    },
-    alt: {
-      fontSize: 16,
-      lineHeight: 24,
-      color: "white",
-    },
-    subheader: {
-      fontWeight: "600",
+    label: {
       fontSize: 18,
       lineHeight: 24,
-      color: "black",
+      fontFamily: "metropolis-medium",
     },
-    header: {
+    input: {
+      fontSize: 18,
+      lineHeight: 24,
+      fontFamily: "open-sans-regular",
+    },
+    button: {
+      fontSize: 18,
+      lineHeight: 27,
+      fontFamily: "open-sans-bold",
+      fontWeight: "600",
+    },
+    micro: {
+      fontSize: 11,
+      lineHeight: 25,
+      fontFamily: "metropolis-bold",
+    },
+    "lg-bold": {
+      fontSize: 20,
+      fontFamily: "open-sans-bold",
       fontWeight: "bold",
-      fontSize: 24,
-      lineHeight: 30,
-      color: "black",
     },
-    title: { fontSize: 28, lineHeight: 36 },
+    "lg-regular": {
+      fontSize: 20,
+      fontFamily: "open-sans-regular",
+    },
+    "lg-light": {
+      fontSize: 20,
+      fontFamily: "open-sans-light",
+      fontWeight: "300",
+    },
+
+    "md-black": {
+      fontSize: 17,
+      fontFamily: "open-sans-black",
+      fontWeight: "900",
+    },
+    "md-bold": {
+      fontSize: 17,
+      fontFamily: "open-sans-bold",
+      fontWeight: "bold",
+    },
+    "md-regular": {
+      fontSize: 17,
+      fontFamily: "open-sans-regular",
+    },
+    "md-light": {
+      fontSize: 17,
+      fontFamily: "open-sans-light",
+      fontWeight: "300",
+    },
+
+    "sm-bold": {
+      fontSize: 15,
+      fontFamily: "open-sans-bold",
+      fontWeight: "bold",
+    },
+    "sm-regular": {
+      fontSize: 15,
+      fontFamily: "open-sans-regular",
+    },
+    "sm-light": {
+      fontSize: 15,
+      fontFamily: "open-sans-light",
+      fontWeight: "300",
+    },
+
+    "xs-bold": {
+      fontSize: 10,
+      fontFamily: "open-sans-bold",
+      fontWeight: "bold",
+    },
+    "xs-regular": {
+      fontSize: 10,
+      fontFamily: "open-sans-regular",
+    },
+    "xs-light": {
+      fontSize: 10,
+      fontFamily: "open-sans-light",
+      fontWeight: "300",
+    },
   },
 });
 
