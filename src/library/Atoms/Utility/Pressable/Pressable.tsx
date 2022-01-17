@@ -4,6 +4,7 @@ import {
   GestureResponderEvent,
 } from "react-native";
 import { Theme } from "../../../theme";
+import Box from "../Box/Box";
 import {
   useRestyle,
   spacing,
@@ -17,10 +18,9 @@ import {
 } from "@shopify/restyle";
 
 export interface PressableProps {
-  accessibilityLabel: string;
   disabled?: boolean;
   disabledStyle?: any;
-  onPress: (nativeEvent: GestureResponderEvent) => void;
+  onPress?: (nativeEvent: GestureResponderEvent) => void;
   onLongPress?: (nativeEvent: GestureResponderEvent) => void;
 }
 
@@ -30,6 +30,7 @@ type Props = SpacingProps<Theme> &
   BorderProps<Theme> &
   BackgroundColorProps<Theme> &
   PressableProps & {
+    accessibilityLabel: string;
     children: any;
   };
 
@@ -43,12 +44,21 @@ const Pressable = ({
 }: Props) => {
   const props = useRestyle(restyleFunctions, rest);
 
+  if (!onPress && !onLongPress) {
+    return (
+      <Box testID={accessibilityLabel} nativeID={accessibilityLabel} {...rest}>
+        {children}
+      </Box>
+    );
+  }
+
   return (
     <RNPressable
       onPress={onPress}
       onLongPress={onLongPress}
       hitSlop={8}
       disabled={disabled}
+      testID={accessibilityLabel}
       nativeID={accessibilityLabel}
       style={({ pressed }: { pressed: boolean }) => [
         disabled ? { backgroundColor: "#ccc" } : undefined,

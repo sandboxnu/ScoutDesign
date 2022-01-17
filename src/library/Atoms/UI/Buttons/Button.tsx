@@ -3,7 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { BoxProps, TextProps } from "@shopify/restyle";
 import theme, { Theme } from "../../../theme";
-import Pressable, { PressableProps } from "../../Utility/Pressable/Pressable";
+import { Pressable, PressableProps } from "../../utility";
 import Text from "../Text/Text";
 import Icon, { IconPayload } from "../Assets/Icon/Icon";
 import CircleButton from "./CircleButton";
@@ -19,7 +19,7 @@ interface ButtonProps extends PressableProps {
   children?: React.ReactNode;
 }
 
-type Props = ButtonProps & TextProps<Theme> & Partial<BoxProps<Theme>> & {};
+type Props = ButtonProps & TextProps<Theme> & {};
 
 const Button: React.FC<Props> = ({
   children,
@@ -63,14 +63,8 @@ const Button: React.FC<Props> = ({
             marginVertical: theme.spacing.xs,
           }}
         >
-          {icon && icon.isValid() && (
-            <Icon
-              name={icon.name}
-              IconComponent={icon.component}
-              color={textColor}
-              size="sm"
-              radius="rounded"
-            />
+          {!!icon && icon.isValid() && (
+            <Icon icon={icon} color={textColor} size="sm" radius="rounded" />
           )}
           <Text
             accessibilityLabel="button-text"
@@ -101,21 +95,15 @@ const Button: React.FC<Props> = ({
         height={40}
         {...props}
       >
-        {icon && icon.isValid() && (
-          <Icon
-            name={icon.name}
-            IconComponent={icon.component}
-            color="white"
-            size="sm"
-            radius="rounded"
-          />
+        {!!icon && icon.isValid() && (
+          <Icon icon={icon} color="white" size="sm" radius="rounded" />
         )}
         <Text
           accessibilityLabel="button-text"
           color="white"
           preset="button"
           style={{
-            paddingLeft: icon ? 8 : undefined,
+            paddingLeft: !!icon ? 8 : undefined,
           }}
         >
           {text}

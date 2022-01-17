@@ -121,40 +121,28 @@ const theme = createTheme({
       fontFamily: "metropolis-bold",
     },
 
-    "label-medium": {
+    label: {
       fontSize: 21,
-      lineHeight: 25,
+      lineHeight: 27,
       fontFamily: "metropolis-medium",
       fontWeight: "500",
     },
-    "label-regular": {
-      fontSize: 21,
-      lineHeight: 25,
-      fontFamily: "metropolis-regular",
-      fontWeight: "400",
-    },
     "label-light": {
       fontSize: 21,
-      lineHeight: 25,
+      lineHeight: 27,
       fontFamily: "metropolis-light",
       fontWeight: "300",
     },
 
-    "sublabel-medium": {
-      fontSize: 15,
-      lineHeight: 15,
+    sublabel: {
+      fontSize: 16,
+      lineHeight: 16,
       fontFamily: "metropolis-medium",
       fontWeight: "500",
     },
-    "sublabel-regular": {
-      fontSize: 15,
-      lineHeight: 15,
-      fontFamily: "metropolis-regular",
-      fontWeight: "400",
-    },
     "sublabel-light": {
-      fontSize: 15,
-      lineHeight: 15,
+      fontSize: 16,
+      lineHeight: 16,
       fontFamily: "metropolis-light",
       fontWeight: "300",
     },
@@ -174,11 +162,6 @@ const theme = createTheme({
       fontWeight: "300",
     },
 
-    "md-black": {
-      fontSize: 17,
-      fontFamily: "open-sans-black",
-      fontWeight: "900",
-    },
     "md-bold": {
       fontSize: 17,
       fontFamily: "open-sans-bold",

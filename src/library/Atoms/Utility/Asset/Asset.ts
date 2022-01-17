@@ -1,8 +1,6 @@
-import Icon from "./Icon/Icon";
-
 export type Dimensions = {
-  width: number;
-  heiht: number;
+  width?: number;
+  height: number;
 };
 
 export type Size = "xs" | "sm" | "md" | "lg";
@@ -13,5 +11,3 @@ export interface AssetProps {
   size: Size;
   radius: Radius;
 }
-
-export type Asset = typeof Icon;

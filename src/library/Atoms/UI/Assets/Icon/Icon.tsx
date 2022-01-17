@@ -1,9 +1,8 @@
 import theme, { Theme } from "../../../../theme";
-import { AssetProps, Radius, Size } from "../Asset";
+import { Pressable } from "../../../utility";
+import { AssetProps, PressableProps, Radius, Size } from "../../../utility";
 
-import { createBox } from "@shopify/restyle";
-
-type IconPayloadObj = {
+type IconPayloadType = {
   name: string;
   component: React.ElementType;
 };
@@ -12,7 +11,7 @@ export class IconPayload {
   name: string;
   component: React.ElementType;
 
-  constructor(icon: IconPayloadObj) {
+  constructor(icon: IconPayloadType) {
     this.name = icon.name;
     this.component = icon.component;
   }
@@ -22,23 +21,20 @@ export class IconPayload {
   }
 }
 
-interface IconProps extends AssetProps {
-  name: string;
-  IconComponent: React.ElementType;
+interface Props extends AssetProps, PressableProps {
+  icon: IconPayload;
   color: keyof typeof theme.colors;
   backgroundColor?: keyof typeof theme.colors;
 }
 
-const Box = createBox<Theme>();
-
 const Icon = ({
   radius,
-  name,
-  IconComponent,
+  icon,
   size,
   color,
   backgroundColor,
-}: IconProps) => {
+  ...rest
+}: Props) => {
   const mapSize = (size: Size): number => {
     switch (size) {
       case "xs":
@@ -68,21 +64,24 @@ const Icon = ({
   };
 
   return (
-    <Box
+    <Pressable
+      accessibilityLabel={icon.name}
       width={mapSize(size) * 1.2}
       height={mapSize(size) * 1.2}
       justifyContent="center"
       alignItems="center"
       backgroundColor={backgroundColor}
       borderRadius={mapRadius(size, radius)}
+      {...rest}
     >
-      <IconComponent
-        name={name}
+      <icon.component
+        name={icon.name}
         size={mapSize(size)}
         color={color ? theme.colors?.[color] : undefined}
       />
-    </Box>
+    </Pressable>
   );
 };
 
+Icon.Payload = IconPayload;
 export default Icon;

@@ -4,9 +4,18 @@ import { Theme } from "../../../theme";
 
 const Text = createText<Theme>();
 
-type weights = "black" | "bold" | "regular" | "light";
+type weights = "bold" | "regular" | "light";
 type sizes = "xs" | "sm" | "md" | "lg";
-type presets = "h3" | "h2" | "h1" | "label" | "input" | "button" | "micro";
+type presets =
+  | "h2"
+  | "h1"
+  | "label"
+  | "label-light"
+  | "sublabel"
+  | "sublabel-light"
+  | "input"
+  | "button"
+  | "micro";
 
 type textProps = React.ComponentProps<typeof Text> & {
   accessibilityLabel: string;

@@ -1,32 +1,11 @@
 import React from "react";
 import { View, ScrollView } from "react-native";
 import Constants from "expo-constants";
-import {
-  MaterialCommunityIcons,
-  Foundation,
-  Ionicons,
-  EvilIcons,
-} from "@expo/vector-icons";
 
 import { Button, LineItem, Text, Icon, Image } from "../library";
-import { IconPayload } from "../library/Atoms/UI/Assets/Icon/Icon";
+import { compass, gearThin, plusBold, plusThin, trash } from "../icons";
 
 const DesignSystem = () => {
-  const boldPlus = new IconPayload({
-    name: "plus",
-    component: (props) => <Foundation {...props} />,
-  });
-
-  const thinPlus = new IconPayload({
-    name: "plus",
-    component: (props) => <MaterialCommunityIcons {...props} />,
-  });
-
-  const trash = new IconPayload({
-    name: "trash",
-    component: (props) => <Ionicons {...props} />,
-  });
-
   return (
     <ScrollView
       style={{ flex: 1 }}
@@ -79,19 +58,19 @@ const DesignSystem = () => {
       <Button
         accessibilityLabel="solid-add-location"
         text="Location"
-        icon={boldPlus}
+        icon={plusBold}
         onPress={() => {}}
       />
       <Button
         accessibilityLabel="gradient-add-location"
         text="Location"
-        icon={boldPlus}
+        icon={plusBold}
         gradient
         onPress={() => {}}
       />
       <Button
         accessibilityLabel="add-icon-circle-button"
-        icon={thinPlus}
+        icon={plusThin}
         gradient
         onPress={() => {}}
       />
@@ -100,7 +79,7 @@ const DesignSystem = () => {
       >
         <Button
           accessibilityLabel="add-icon-circle-button"
-          icon={thinPlus}
+          icon={plusThin}
           backgroundColor="question"
           animated
           gradient
@@ -110,17 +89,25 @@ const DesignSystem = () => {
       <LineItem
         accessibilityLabel="basic-line-item"
         type="static"
-        leftComponent={<Image placement="foreground" />}
+        leftComponent={
+          <Image
+            accessibilityLabel="user-profile"
+            placement="foreground"
+            source={{
+              uri: "https://picsum.photos/24",
+            }}
+          />
+        }
         rightComponent={
           <Icon
-            name="gear"
-            IconComponent={(props) => <EvilIcons {...props} />}
+            icon={gearThin}
             color="black"
             size="lg"
             radius="rounded"
+            onPress={() => {}}
           />
         }
-        // backgroundColor="brandAction"
+        topBorder
       >
         <Text
           preset="label-light"
@@ -134,6 +121,19 @@ const DesignSystem = () => {
           color="darkGrey"
           accessibilityLabel="home-text"
         >
+          Troop 319
+        </Text>
+      </LineItem>
+      <LineItem
+        accessibilityLabel="basic-line-item"
+        type="button"
+        onPress={() => {}}
+        leftComponent={
+          <Icon icon={compass} color="white" size="lg" radius="rounded" />
+        }
+        backgroundColor="brandAction"
+      >
+        <Text preset="label" color="white" accessibilityLabel="home-text">
           Troop 319
         </Text>
       </LineItem>

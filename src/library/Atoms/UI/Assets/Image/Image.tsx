@@ -1,19 +1,35 @@
-import { Image as RNImage, View, StyleSheet } from "react-native";
+import React from "react";
+import {
+  Image as RNImage,
+  ImageSourcePropType,
+  StyleSheet,
+} from "react-native";
+import { Pressable, AssetProps, PressableProps } from "../../../utility";
 
-type PictureProps = {
-  placement: "background" | "foreground";
-};
+interface ImageProps extends AssetProps, PressableProps {
+  accessibilityLabel: string;
+  placement?: "background" | "foreground";
+  source: ImageSourcePropType;
+  PlaceholderComponent?: React.ReactElement;
+  resizeMode?: "cover" | "contain" | "stretch" | "center";
+}
 
-const Image = ({ placement }: PictureProps) => {
+const Image = ({
+  accessibilityLabel,
+  placement = "foreground",
+  source,
+  PlaceholderComponent,
+  resizeMode = "cover",
+  ...rest
+}: ImageProps) => {
   return (
-    <View style={{ padding: 4 }}>
+    <Pressable accessibilityLabel={accessibilityLabel} padding="s" {...rest}>
       <RNImage
         style={styles.tinyLogo}
-        source={{
-          uri: "https://picsum.photos/24",
-        }}
+        source={source}
+        resizeMode={resizeMode}
       />
-    </View>
+    </Pressable>
   );
 };
 
