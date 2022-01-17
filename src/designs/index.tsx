@@ -5,9 +5,10 @@ import {
   MaterialCommunityIcons,
   Foundation,
   Ionicons,
+  EvilIcons,
 } from "@expo/vector-icons";
 
-import { Button, Text } from "../library";
+import { Button, LineItem, Text, Icon, Image } from "../library";
 import { IconPayload } from "../library/Atoms/UI/Assets/Icon/Icon";
 
 const DesignSystem = () => {
@@ -106,6 +107,36 @@ const DesignSystem = () => {
           onPress={() => {}}
         />
       </View>
+      <LineItem
+        accessibilityLabel="basic-line-item"
+        type="static"
+        leftComponent={<Image placement="foreground" />}
+        rightComponent={
+          <Icon
+            name="gear"
+            IconComponent={(props) => <EvilIcons {...props} />}
+            color="black"
+            size="lg"
+            radius="rounded"
+          />
+        }
+        // backgroundColor="brandAction"
+      >
+        <Text
+          preset="label-light"
+          color="darkGrey"
+          accessibilityLabel="home-text"
+        >
+          Kaleb Davenport
+        </Text>
+        <Text
+          preset="sublabel-light"
+          color="darkGrey"
+          accessibilityLabel="home-text"
+        >
+          Troop 319
+        </Text>
+      </LineItem>
     </ScrollView>
   );
 };

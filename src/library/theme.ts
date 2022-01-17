@@ -72,6 +72,7 @@ const theme = createTheme({
     white: palette.white,
   },
   spacing: {
+    micro: 2,
     xs: 4,
     s: 8,
     m: 16,
@@ -83,7 +84,8 @@ const theme = createTheme({
     xs: 10,
     sm: 14,
     md: 24,
-    lg: 96,
+    lg: 28,
+    xl: 96,
   },
   breakpoints: {
     phone: 0,
@@ -102,11 +104,6 @@ const theme = createTheme({
       fontFamily: "metropolis-bold",
       fontWeight: "bold",
     },
-    label: {
-      fontSize: 18,
-      lineHeight: 24,
-      fontFamily: "metropolis-medium",
-    },
     input: {
       fontSize: 18,
       lineHeight: 24,
@@ -123,6 +120,45 @@ const theme = createTheme({
       lineHeight: 25,
       fontFamily: "metropolis-bold",
     },
+
+    "label-medium": {
+      fontSize: 21,
+      lineHeight: 25,
+      fontFamily: "metropolis-medium",
+      fontWeight: "500",
+    },
+    "label-regular": {
+      fontSize: 21,
+      lineHeight: 25,
+      fontFamily: "metropolis-regular",
+      fontWeight: "400",
+    },
+    "label-light": {
+      fontSize: 21,
+      lineHeight: 25,
+      fontFamily: "metropolis-light",
+      fontWeight: "300",
+    },
+
+    "sublabel-medium": {
+      fontSize: 15,
+      lineHeight: 15,
+      fontFamily: "metropolis-medium",
+      fontWeight: "500",
+    },
+    "sublabel-regular": {
+      fontSize: 15,
+      lineHeight: 15,
+      fontFamily: "metropolis-regular",
+      fontWeight: "400",
+    },
+    "sublabel-light": {
+      fontSize: 15,
+      lineHeight: 15,
+      fontFamily: "metropolis-light",
+      fontWeight: "300",
+    },
+
     "lg-bold": {
       fontSize: 20,
       fontFamily: "open-sans-bold",

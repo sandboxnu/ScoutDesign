@@ -8,8 +8,10 @@ import {
   useRestyle,
   spacing,
   border,
+  layout,
   backgroundColor,
   SpacingProps,
+  LayoutProps,
   BorderProps,
   BackgroundColorProps,
 } from "@shopify/restyle";
@@ -17,12 +19,14 @@ import {
 export interface PressableProps {
   accessibilityLabel: string;
   disabled?: boolean;
+  disabledStyle?: any;
   onPress: (nativeEvent: GestureResponderEvent) => void;
   onLongPress?: (nativeEvent: GestureResponderEvent) => void;
 }
 
-const restyleFunctions = [spacing, border, backgroundColor];
+const restyleFunctions = [spacing, layout, border, backgroundColor];
 type Props = SpacingProps<Theme> &
+  LayoutProps<Theme> &
   BorderProps<Theme> &
   BackgroundColorProps<Theme> &
   PressableProps & {
