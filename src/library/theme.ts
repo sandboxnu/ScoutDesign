@@ -80,6 +80,11 @@ const theme = createTheme({
     xl: 40,
     xxl: 96,
   },
+  fixedCornerSizes: {
+    sm: 2,
+    md: 7,
+    lg: 14,
+  },
   assetSizes: {
     xs: 10,
     sm: 14,

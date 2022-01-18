@@ -3,11 +3,11 @@ export type Dimensions = {
   height: number;
 };
 
-export type Size = "xs" | "sm" | "md" | "lg";
+export type SizePresets = "xs" | "sm" | "md" | "lg" | "xl";
 
 export type Radius = "none" | "rounded" | "circle";
 
 export interface AssetProps {
-  size: Size;
+  size: SizePresets | Dimensions;
   radius: Radius;
 }

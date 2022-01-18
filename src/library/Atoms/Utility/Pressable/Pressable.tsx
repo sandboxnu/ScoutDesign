@@ -10,9 +10,11 @@ import {
   spacing,
   border,
   layout,
+  position,
   backgroundColor,
   SpacingProps,
   LayoutProps,
+  PositionProps,
   BorderProps,
   BackgroundColorProps,
 } from "@shopify/restyle";
@@ -27,6 +29,7 @@ export interface PressableProps {
 const restyleFunctions = [spacing, layout, border, backgroundColor];
 type Props = SpacingProps<Theme> &
   LayoutProps<Theme> &
+  PositionProps<Theme> &
   BorderProps<Theme> &
   BackgroundColorProps<Theme> &
   PressableProps & {

@@ -1,6 +1,11 @@
-import theme, { Theme } from "../../../../theme";
-import { Pressable } from "../../../utility";
-import { AssetProps, PressableProps, Radius, Size } from "../../../utility";
+import theme from "../../../../theme";
+import {
+  Pressable,
+  AssetProps,
+  PressableProps,
+  Radius,
+  SizePresets,
+} from "../../../utility";
 
 type IconPayloadType = {
   name: string;
@@ -35,7 +40,7 @@ const Icon = ({
   backgroundColor,
   ...rest
 }: Props) => {
-  const mapSize = (size: Size): number => {
+  const mapSize = (size: SizePresets): number => {
     switch (size) {
       case "xs":
         return theme.assetSizes.xs;
@@ -50,7 +55,7 @@ const Icon = ({
     }
   };
 
-  const mapRadius = (size: Size, radius: Radius): number | undefined => {
+  const mapRadius = (size: SizePresets, radius: Radius): number | undefined => {
     switch (radius) {
       case "none":
         return undefined;
@@ -63,24 +68,29 @@ const Icon = ({
     }
   };
 
-  return (
-    <Pressable
-      accessibilityLabel={icon.name}
-      width={mapSize(size) * 1.2}
-      height={mapSize(size) * 1.2}
-      justifyContent="center"
-      alignItems="center"
-      backgroundColor={backgroundColor}
-      borderRadius={mapRadius(size, radius)}
-      {...rest}
-    >
-      <icon.component
-        name={icon.name}
-        size={mapSize(size)}
-        color={color ? theme.colors?.[color] : undefined}
-      />
-    </Pressable>
-  );
+  if (typeof size !== "string") {
+    console.error("Icon can only use size presets, not custom dimensions.");
+    return null;
+  } else {
+    return (
+      <Pressable
+        accessibilityLabel={icon.name}
+        width={mapSize(size) * 1.2}
+        height={mapSize(size) * 1.2}
+        justifyContent="center"
+        alignItems="center"
+        backgroundColor={backgroundColor}
+        borderRadius={mapRadius(size, radius)}
+        {...rest}
+      >
+        <icon.component
+          name={icon.name}
+          size={mapSize(size)}
+          color={color ? theme.colors?.[color] : undefined}
+        />
+      </Pressable>
+    );
+  }
 };
 
 Icon.Payload = IconPayload;

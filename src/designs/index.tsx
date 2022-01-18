@@ -1,9 +1,11 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Dimensions } from "react-native";
 import Constants from "expo-constants";
 
 import { Button, LineItem, Text, Icon, Image } from "../library";
 import { compass, gearThin, plusBold, plusThin, trash } from "../icons";
+
+// There is currently no way to move an image around under the clipping mask. It's centered and that's the only option. If anyone knows how to move the image so I could pass "bottom center" and have the image anchored at the bottom and center that would be great, hmu
 
 const DesignSystem = () => {
   return (
@@ -15,12 +17,32 @@ const DesignSystem = () => {
         paddingBottom: 180,
       }}
     >
-      <Text accessibilityLabel="ScoutDesign-heading-1" preset="h1">
+      <Text
+        accessibilityLabel="ScoutDesign-heading-1"
+        color="white"
+        preset="h1"
+      >
         Heading 1
       </Text>
-      <Text accessibilityLabel="ScoutDesign-heading-2" preset="h2">
+      <Text
+        accessibilityLabel="ScoutDesign-heading-2"
+        color="white"
+        preset="h2"
+      >
         Heading 2
       </Text>
+      <Image
+        accessibilityLabel="user-profile"
+        radius="none"
+        placement="background"
+        // radius="rounded"
+        size={{
+          height: Dimensions.get("window").height * 0.135,
+        }}
+        source={{
+          uri: "https://picsum.photos/1200",
+        }}
+      />
 
       <Text accessibilityLabel="home-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus
@@ -92,7 +114,9 @@ const DesignSystem = () => {
         leftComponent={
           <Image
             accessibilityLabel="user-profile"
-            placement="foreground"
+            padding="s"
+            radius="circle"
+            size="md"
             source={{
               uri: "https://picsum.photos/24",
             }}
@@ -137,6 +161,16 @@ const DesignSystem = () => {
           Troop 319
         </Text>
       </LineItem>
+      <Image
+        accessibilityLabel="user-profile"
+        radius="rounded"
+        size={{
+          height: 120,
+        }}
+        source={{
+          uri: "https://picsum.photos/500",
+        }}
+      />
     </ScrollView>
   );
 };

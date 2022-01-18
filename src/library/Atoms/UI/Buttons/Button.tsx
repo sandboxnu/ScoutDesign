@@ -1,7 +1,7 @@
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { BoxProps, TextProps } from "@shopify/restyle";
+import { TextProps } from "@shopify/restyle";
 import theme, { Theme } from "../../../theme";
 import { Pressable, PressableProps } from "../../utility";
 import Text from "../Text/Text";
@@ -9,6 +9,7 @@ import Icon, { IconPayload } from "../Assets/Icon/Icon";
 import CircleButton from "./CircleButton";
 
 interface ButtonProps extends PressableProps {
+  accessibilityLabel: string;
   text?: string;
   textColor?: keyof typeof theme.colors;
   backgroundColor?: keyof typeof theme.colors;
