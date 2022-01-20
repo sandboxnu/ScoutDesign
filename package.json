@@ -15,9 +15,9 @@
   "dependencies": {
     "@shopify/restyle": "^1.5.0",
     "expo": "^44.0.4",
-    "expo-constants": "~13.0.0",
+    "expo-constants": "~13.0.1",
     "expo-font": "~10.0.4",
-    "expo-linear-gradient": "^11.0.0",
+    "expo-linear-gradient": "~11.0.0",
     "expo-status-bar": "~1.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
