@@ -2,7 +2,7 @@ import React from "react";
 import { View, ScrollView, Dimensions } from "react-native";
 import Constants from "expo-constants";
 
-import { Button, LineItem, Text, Icon, Image } from "../library";
+import { Badge, Button, LineItem, Text, Icon, Image } from "../library";
 import { compass, gearThin, plusBold, plusThin, trash } from "../icons";
 
 // There is currently no way to move an image around under the clipping mask. It's centered and that's the only option. If anyone knows how to move the image so I could pass "bottom center" and have the image anchored at the bottom and center that would be great, hmu
@@ -161,15 +161,26 @@ const DesignSystem = () => {
           Troop 319
         </Text>
       </LineItem>
+
       <Image
         accessibilityLabel="user-profile"
         radius="rounded"
-        size={{
-          height: 120,
-        }}
+        onPress={() => {}}
+        size="xl"
         source={{
           uri: "https://picsum.photos/500",
         }}
+        title="Hike"
+      />
+      <Badge
+        accessibilityLabel="campout-solid-badge"
+        text="Campout"
+        color="questionDark"
+      />
+      <Badge
+        accessibilityLabel="campout-solid-badge"
+        text="Campout"
+        color="gradient"
       />
     </ScrollView>
   );

@@ -26,7 +26,7 @@ export interface PressableProps {
   onLongPress?: (nativeEvent: GestureResponderEvent) => void;
 }
 
-const restyleFunctions = [spacing, layout, border, backgroundColor];
+const restyleFunctions = [spacing, layout, border, position, backgroundColor];
 type Props = SpacingProps<Theme> &
   LayoutProps<Theme> &
   PositionProps<Theme> &

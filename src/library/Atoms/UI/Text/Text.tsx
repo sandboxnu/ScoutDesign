@@ -9,19 +9,22 @@ type sizes = "xs" | "sm" | "md" | "lg";
 type presets =
   | "h2"
   | "h1"
+  | "subheading"
   | "label"
   | "label-light"
   | "sublabel"
   | "sublabel-light"
-  | "input"
   | "button"
   | "micro";
+
+type shadows = "strong" | "medium" | "subtle";
 
 type textProps = React.ComponentProps<typeof Text> & {
   accessibilityLabel: string;
   size?: sizes;
   weight?: weights;
   preset?: presets;
+  shadow?: shadows;
 } & TextProps<Theme>;
 
 const ScoutText = ({
@@ -29,17 +32,15 @@ const ScoutText = ({
   size = "md",
   weight = "regular",
   preset,
+  shadow,
   children,
-  color,
-  style,
+  ...rest
 }: textProps) => {
-  const theme = useTheme<Theme>();
-
   return (
     <Text
-      style={[color ? { color: theme.colors[color] } : undefined, style]}
       variant={preset ? preset : `${size}-${weight}`}
       nativeID={accessibilityLabel}
+      {...rest}
     >
       {children}
     </Text>

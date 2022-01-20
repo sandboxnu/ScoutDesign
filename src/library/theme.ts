@@ -90,7 +90,7 @@ const theme = createTheme({
     sm: 14,
     md: 24,
     lg: 28,
-    xl: 96,
+    xl: 140,
   },
   breakpoints: {
     phone: 0,
@@ -104,15 +104,15 @@ const theme = createTheme({
       fontWeight: "bold",
     },
     h2: {
-      fontSize: 27,
+      fontSize: 28,
       lineHeight: 36,
       fontFamily: "metropolis-bold",
       fontWeight: "bold",
     },
-    input: {
-      fontSize: 18,
+    subheading: {
+      fontSize: 19.5,
       lineHeight: 24,
-      fontFamily: "open-sans-regular",
+      fontFamily: "metropolis-regular",
     },
     button: {
       fontSize: 18,
@@ -121,8 +121,8 @@ const theme = createTheme({
       fontWeight: "600",
     },
     micro: {
-      fontSize: 11,
-      lineHeight: 25,
+      fontSize: 13,
+      lineHeight: 14,
       fontFamily: "metropolis-bold",
     },
 
