@@ -14,9 +14,7 @@ import {
   Box,
   AssetProps,
   PressableProps,
-  Radius,
-  Dimensions,
-  SizePresets,
+  mapRadius,
 } from "../../../utility";
 
 import Text from "../../Text/Text";
@@ -43,51 +41,22 @@ const Image = ({
   size,
   ...rest
 }: Props) => {
-  const mapRadius = (
-    size: SizePresets | Dimensions,
-    radius: Radius
-  ): number | undefined => {
-    switch (radius) {
-      case "none":
-        return undefined;
-      case "rounded":
-        return theme.fixedCornerSizes.md;
-      case "circle":
-        if (typeof size === "string") {
-          return theme.assetSizes[size];
-        } else if (size.height === size.width) {
-          return size.height / 2;
-        } else {
-          return theme.fixedCornerSizes.lg;
-        }
-      default:
-        return undefined;
-    }
-  };
-
-  const backgroundImageProps =
-    placement === "foreground"
-      ? {
-          position: "relative",
-        }
-      : {
-          zIndex: -1,
-          position: "absolute",
-          top: 0,
-          right: 0,
-          left: 0,
-        };
+  const foreground = placement === "foreground";
 
   return (
     <Pressable
-      {...backgroundImageProps}
+      position={foreground ? "relative" : "absolute"}
+      zIndex={foreground ? undefined : -1}
+      top={foreground ? undefined : 0}
+      right={foreground ? undefined : 0}
+      left={foreground ? undefined : 0}
       accessibilityLabel={accessibilityLabel}
       {...rest}
     >
       <Box
         width={typeof size === "string" ? theme.assetSizes[size] : size.width}
         height={typeof size === "string" ? theme.assetSizes[size] : size.height}
-        borderRadius={mapRadius(size, radius)}
+        borderRadius={mapRadius(radius, size)}
         overflow="hidden"
       >
         <RNImage style={StyleSheet.absoluteFillObject} source={source} />

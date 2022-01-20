@@ -73,7 +73,7 @@ const CircleButton = ({
           },
         ]}
       >
-        <Icon icon={icon} color="white" size="md" radius="rounded" />
+        <Icon icon={icon} color="white" size="m" />
       </AnimatedTouchable>
     </View>
   );

@@ -24,6 +24,7 @@ export interface PressableProps {
   disabledStyle?: any;
   onPress?: (nativeEvent: GestureResponderEvent) => void;
   onLongPress?: (nativeEvent: GestureResponderEvent) => void;
+  sideEffect?: () => void;
 }
 
 const restyleFunctions = [spacing, layout, border, position, backgroundColor];
@@ -42,12 +43,13 @@ const Pressable = ({
   disabled = false,
   onPress,
   onLongPress,
+  sideEffect,
   children,
   ...rest
 }: Props) => {
   const props = useRestyle(restyleFunctions, rest);
 
-  if (!onPress && !onLongPress) {
+  if (!onPress && !onLongPress && !sideEffect) {
     return (
       <Box testID={accessibilityLabel} nativeID={accessibilityLabel} {...rest}>
         {children}
@@ -57,7 +59,7 @@ const Pressable = ({
 
   return (
     <RNPressable
-      onPress={onPress}
+      onPress={sideEffect || onPress}
       onLongPress={onLongPress}
       hitSlop={8}
       disabled={disabled}
@@ -65,7 +67,7 @@ const Pressable = ({
       nativeID={accessibilityLabel}
       style={({ pressed }: { pressed: boolean }) => [
         disabled ? { backgroundColor: "#ccc" } : undefined,
-        { opacity: pressed ? 0.4 : 1 },
+        { opacity: pressed && !sideEffect ? 0.4 : 1 },
       ]}
     >
       {({ pressed }) => <View {...props}>{children}</View>}

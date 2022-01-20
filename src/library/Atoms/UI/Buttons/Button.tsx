@@ -65,7 +65,7 @@ const Button: React.FC<Props> = ({
           }}
         >
           {!!icon && icon.isValid() && (
-            <Icon icon={icon} color={textColor} size="sm" radius="rounded" />
+            <Icon icon={icon} color={textColor} size="s" />
           )}
           <Text
             accessibilityLabel="button-text"
@@ -97,7 +97,7 @@ const Button: React.FC<Props> = ({
         {...props}
       >
         {!!icon && icon.isValid() && (
-          <Icon icon={icon} color="white" size="sm" radius="rounded" />
+          <Icon icon={icon} color="white" size="s" />
         )}
         <Text
           accessibilityLabel="button-text"

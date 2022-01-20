@@ -32,7 +32,6 @@ const Badge: React.FC<BadgeProps> = ({
       backgroundColor={color !== "gradient" ? color : undefined}
       paddingVertical="micro"
       paddingHorizontal="s"
-      marginVertical="s"
       {...props}
     >
       {color === "gradient" && (

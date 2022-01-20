@@ -3,7 +3,14 @@ import { View, ScrollView, Dimensions } from "react-native";
 import Constants from "expo-constants";
 
 import { Badge, Button, LineItem, Text, Icon, Image } from "../library";
-import { compass, gearThin, plusBold, plusThin, trash } from "../icons";
+import {
+  gearThin,
+  light,
+  plusBold,
+  plusThin,
+  searchThin,
+  trash,
+} from "../icons";
 
 // There is currently no way to move an image around under the clipping mask. It's centered and that's the only option. If anyone knows how to move the image so I could pass "bottom center" and have the image anchored at the bottom and center that would be great, hmu
 
@@ -33,15 +40,18 @@ const DesignSystem = () => {
       </Text>
       <Image
         accessibilityLabel="user-profile"
-        radius="none"
         placement="background"
-        // radius="rounded"
         size={{
           height: Dimensions.get("window").height * 0.135,
         }}
         source={{
           uri: "https://picsum.photos/1200",
         }}
+      />
+      <Badge
+        accessibilityLabel="campout-solid-badge"
+        text="Campout"
+        color="gradient"
       />
 
       <Text accessibilityLabel="home-text">
@@ -114,73 +124,73 @@ const DesignSystem = () => {
         leftComponent={
           <Image
             accessibilityLabel="user-profile"
-            padding="s"
             radius="circle"
-            size="md"
+            size="m"
             source={{
-              uri: "https://picsum.photos/24",
+              uri: "https://picsum.photos/28",
             }}
           />
         }
         rightComponent={
-          <Icon
-            icon={gearThin}
-            color="black"
-            size="lg"
-            radius="rounded"
-            onPress={() => {}}
-          />
+          <Icon icon={gearThin} color="black" size="l" onPress={() => {}} />
         }
         topBorder
       >
-        <Text
-          preset="label-light"
-          color="darkGrey"
-          accessibilityLabel="home-text"
-        >
+        <LineItem.Heading accessibilityLabel="user-name">
           Kaleb Davenport
-        </Text>
-        <Text
-          preset="sublabel-light"
-          color="darkGrey"
-          accessibilityLabel="home-text"
-        >
+        </LineItem.Heading>
+        <LineItem.Subheading accessibilityLabel="troop-number">
           Troop 319
-        </Text>
+        </LineItem.Subheading>
       </LineItem>
       <LineItem
         accessibilityLabel="basic-line-item"
         type="button"
         onPress={() => {}}
-        leftComponent={
-          <Icon icon={compass} color="white" size="lg" radius="rounded" />
-        }
-        backgroundColor="brandAction"
+        leftComponent={<Icon icon={searchThin} color="darkGrey" size="l" />}
       >
-        <Text preset="label" color="white" accessibilityLabel="home-text">
-          Troop 319
-        </Text>
+        <LineItem.Subheading accessibilityLabel="troop-319">
+          Celeste Slater 606-3727 Ullamcorper. Street Roseville NH 11523 (786)
+          713-8616
+        </LineItem.Subheading>
+      </LineItem>
+      <LineItem
+        accessibilityLabel="basic-line-item"
+        type="accordion"
+        backgroundColor="lightMintGrey"
+        leftComponent={
+          <Icon
+            radius="circle"
+            backgroundColor="white"
+            icon={light}
+            color="darkGrey"
+            size="s"
+          />
+        }
+        accordionContent={
+          <Badge
+            onPress={() => {}}
+            accessibilityLabel="campout-solid-badge"
+            text="Campout"
+            color="questionDark"
+          />
+        }
+        radius="m"
+      >
+        <LineItem.Heading accessibilityLabel="troop-319">
+          Troop 318
+        </LineItem.Heading>
       </LineItem>
 
       <Image
         accessibilityLabel="user-profile"
-        radius="rounded"
+        radius="m"
         onPress={() => {}}
         size="xl"
         source={{
           uri: "https://picsum.photos/500",
         }}
         title="Hike"
-      />
-      <Badge
-        accessibilityLabel="campout-solid-badge"
-        text="Campout"
-        color="questionDark"
-      />
-      <Badge
-        accessibilityLabel="campout-solid-badge"
-        text="Campout"
-        color="gradient"
       />
     </ScrollView>
   );

@@ -5,7 +5,7 @@ import { Theme } from "../../../theme";
 const Text = createText<Theme>();
 
 type weights = "bold" | "regular" | "light";
-type sizes = "xs" | "sm" | "md" | "lg";
+type sizes = "xs" | "s" | "m" | "l";
 type presets =
   | "h2"
   | "h1"
@@ -29,7 +29,7 @@ type textProps = React.ComponentProps<typeof Text> & {
 
 const ScoutText = ({
   accessibilityLabel,
-  size = "md",
+  size = "m",
   weight = "regular",
   preset,
   shadow,

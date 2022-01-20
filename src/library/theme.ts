@@ -81,15 +81,17 @@ const theme = createTheme({
     xxl: 96,
   },
   fixedCornerSizes: {
-    sm: 2,
-    md: 7,
-    lg: 14,
+    xs: 2,
+    s: 4,
+    m: 7,
+    l: 14,
+    xl: 18,
   },
   assetSizes: {
     xs: 10,
-    sm: 14,
-    md: 24,
-    lg: 28,
+    s: 14,
+    m: 25,
+    l: 30,
     xl: 140,
   },
   breakpoints: {
@@ -141,57 +143,57 @@ const theme = createTheme({
 
     sublabel: {
       fontSize: 16,
-      lineHeight: 16,
+      lineHeight: 18,
       fontFamily: "metropolis-medium",
       fontWeight: "500",
     },
     "sublabel-light": {
       fontSize: 16,
-      lineHeight: 16,
+      lineHeight: 18,
       fontFamily: "metropolis-light",
       fontWeight: "300",
     },
 
-    "lg-bold": {
+    "l-bold": {
       fontSize: 20,
       fontFamily: "open-sans-bold",
       fontWeight: "bold",
     },
-    "lg-regular": {
+    "l-regular": {
       fontSize: 20,
       fontFamily: "open-sans-regular",
     },
-    "lg-light": {
+    "l-light": {
       fontSize: 20,
       fontFamily: "open-sans-light",
       fontWeight: "300",
     },
 
-    "md-bold": {
+    "m-bold": {
       fontSize: 17,
       fontFamily: "open-sans-bold",
       fontWeight: "bold",
     },
-    "md-regular": {
+    "m-regular": {
       fontSize: 17,
       fontFamily: "open-sans-regular",
     },
-    "md-light": {
+    "m-light": {
       fontSize: 17,
       fontFamily: "open-sans-light",
       fontWeight: "300",
     },
 
-    "sm-bold": {
+    "s-bold": {
       fontSize: 15,
       fontFamily: "open-sans-bold",
       fontWeight: "bold",
     },
-    "sm-regular": {
+    "s-regular": {
       fontSize: 15,
       fontFamily: "open-sans-regular",
     },
-    "sm-light": {
+    "s-light": {
       fontSize: 15,
       fontFamily: "open-sans-light",
       fontWeight: "300",

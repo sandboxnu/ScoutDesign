@@ -5,11 +5,12 @@ import {
   PressableProps,
   Radius,
   SizePresets,
+  mapRadius,
 } from "../../../utility";
 
 type IconPayloadType = {
   name: string;
-  component: React.ElementType;
+  library: React.ElementType;
 };
 
 export class IconPayload {
@@ -18,7 +19,7 @@ export class IconPayload {
 
   constructor(icon: IconPayloadType) {
     this.name = icon.name;
-    this.component = icon.component;
+    this.component = (props) => <icon.library {...props} />;
   }
 
   isValid() {
@@ -40,34 +41,6 @@ const Icon = ({
   backgroundColor,
   ...rest
 }: Props) => {
-  const mapSize = (size: SizePresets): number => {
-    switch (size) {
-      case "xs":
-        return theme.assetSizes.xs;
-      case "sm":
-        return theme.assetSizes.sm;
-      case "md":
-        return theme.assetSizes.md;
-      case "lg":
-        return theme.assetSizes.lg;
-      default:
-        return theme.assetSizes.sm;
-    }
-  };
-
-  const mapRadius = (size: SizePresets, radius: Radius): number | undefined => {
-    switch (radius) {
-      case "none":
-        return undefined;
-      case "rounded":
-        return theme.assetSizes[size] / 4;
-      case "circle":
-        return theme.assetSizes[size];
-      default:
-        return undefined;
-    }
-  };
-
   if (typeof size !== "string") {
     console.error("Icon can only use size presets, not custom dimensions.");
     return null;
@@ -75,17 +48,21 @@ const Icon = ({
     return (
       <Pressable
         accessibilityLabel={icon.name}
-        width={mapSize(size) * 1.2}
-        height={mapSize(size) * 1.2}
-        justifyContent="center"
-        alignItems="center"
-        backgroundColor={backgroundColor}
-        borderRadius={mapRadius(size, radius)}
+        borderRadius={mapRadius(radius, size)}
+        overflow="hidden"
         {...rest}
       >
         <icon.component
+          style={
+            backgroundColor
+              ? {
+                  padding: 6,
+                  backgroundColor: theme.colors[backgroundColor],
+                }
+              : undefined
+          }
           name={icon.name}
-          size={mapSize(size)}
+          size={theme.assetSizes[size]}
           color={color ? theme.colors?.[color] : undefined}
         />
       </Pressable>
