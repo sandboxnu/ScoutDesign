@@ -4,20 +4,20 @@ const palette = {
   sunglowYellow: "#FFCC00",
   mustardYellow: "#FFD633",
   crayolaYellow: "#FFEB99",
-  darkOrange: "#F7951D",
-  yellorange: "#FAAC38",
+  darkOrange: "#E98D01",
+  orangePeel: "#FDA521",
   lightPeach: "#FFDCAD",
-  crimsonRed: "#C92238",
-  amaranth: "#DD4055",
+  darkRed: "#C72B23",
+  mediumRed: "#DF5349",
   mauvelous: "#EF9FAA",
   airforceBlue: "#16559C",
   brightNavy: "#1F74D6",
   tuftsBlue: "#4C94E6",
   darkOliveBrown: "#48390A",
-  bisterBrown: "#7E6411",
+  drabBrown: "#7D6012",
   lemonCurryBrown: "#C9A326",
-  darkSpringGreen: "#127D46",
-  pantoneGreen: "#1CB55C",
+  darkGreen: "#288555",
+  shamrockGreen: "#34A86C",
   aquamarine: "#74E7AA",
   teaGreen: "#DBFBDF",
   greenGlow: "#F4FBF4",
@@ -37,15 +37,15 @@ const palette = {
 const theme = createTheme({
   colors: {
     brandActionLight: palette.aquamarine,
-    brandAction: palette.pantoneGreen,
-    brandActionDark: palette.darkSpringGreen,
+    brandAction: palette.shamrockGreen,
+    brandActionDark: palette.darkGreen,
 
     brandInactionLight: palette.lemonCurryBrown,
-    brandInaction: palette.bisterBrown,
+    brandInaction: palette.drabBrown,
     brandInactionDark: palette.darkOliveBrown,
 
     questionLight: palette.lightPeach,
-    question: palette.yellorange,
+    question: palette.orangePeel,
     questionDark: palette.darkOrange,
 
     answerLight: palette.tuftsBlue,
@@ -53,8 +53,8 @@ const theme = createTheme({
     answerDark: palette.airforceBlue,
 
     dangerLight: palette.mauvelous,
-    danger: palette.amaranth,
-    dangerDark: palette.crimsonRed,
+    danger: palette.mediumRed,
+    dangerDark: palette.darkRed,
 
     urgentLight: palette.crayolaYellow,
     urgent: palette.mustardYellow,
@@ -80,7 +80,7 @@ const theme = createTheme({
     xl: 40,
     xxl: 96,
   },
-  fixedCornerSizes: {
+  radii: {
     xs: 2,
     s: 4,
     m: 7,
@@ -88,8 +88,8 @@ const theme = createTheme({
     xl: 18,
   },
   assetSizes: {
-    xs: 10,
-    s: 14,
+    xs: 16,
+    s: 20,
     m: 25,
     l: 30,
     xl: 140,
@@ -123,7 +123,7 @@ const theme = createTheme({
       fontWeight: "600",
     },
     micro: {
-      fontSize: 13,
+      fontSize: 14,
       lineHeight: 14,
       fontFamily: "metropolis-bold",
     },

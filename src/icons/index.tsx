@@ -6,49 +6,71 @@ import {
   Entypo,
 } from "@expo/vector-icons";
 
-import { Icon } from "../library";
+export type IconPayloadType = {
+  name: string;
+  library: React.ElementType;
+};
 
-export const compass = new Icon.Payload({
+export class IconPayload {
+  name: string;
+  component: React.ElementType;
+
+  constructor(icon: IconPayloadType) {
+    this.name = icon.name;
+    this.component = (props) => <icon.library {...props} />;
+  }
+
+  isValid() {
+    return this.name && this.component;
+  }
+}
+
+export const bonfire = new IconPayload({
+  name: "bonfire-outline",
+  library: Ionicons,
+});
+
+export const compass = new IconPayload({
   name: "compass-sharp",
   library: Ionicons,
 });
 
-export const downCaret = new Icon.Payload({
+export const downCaret = new IconPayload({
   name: "chevron-thin-down",
   library: Entypo,
 });
 
-export const gearThin = new Icon.Payload({
+export const gearThin = new IconPayload({
   name: "gear",
   library: EvilIcons,
 });
 
-export const light = new Icon.Payload({
+export const light = new IconPayload({
   name: "light-up",
   library: Entypo,
 });
 
-export const plusBold = new Icon.Payload({
+export const plusBold = new IconPayload({
   name: "plus",
   library: Foundation,
 });
 
-export const plusThin = new Icon.Payload({
+export const plusThin = new IconPayload({
   name: "plus",
   library: MaterialCommunityIcons,
 });
 
-export const searchThin = new Icon.Payload({
+export const searchThin = new IconPayload({
   name: "search",
   library: EvilIcons,
 });
 
-export const trash = new Icon.Payload({
+export const trash = new IconPayload({
   name: "trash",
   library: Ionicons,
 });
 
-export const upCaret = new Icon.Payload({
+export const upCaret = new IconPayload({
   name: "chevron-thin-up",
   library: Entypo,
 });

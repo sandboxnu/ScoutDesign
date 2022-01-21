@@ -4,33 +4,40 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import theme from "../../../theme";
 import { Pressable, PressableProps } from "../../utility";
+import { IconPayload } from "../../../../icons";
+import Icon from "../Assets/Icon/Icon";
 import Text from "../Text/Text";
 
 interface BadgeProps extends PressableProps {
   accessibilityLabel: string;
-  text?: string;
+  text: string;
+  icon?: IconPayload;
   color: "gradient" | keyof typeof theme.colors;
   children?: React.ReactNode;
 }
 
-const Badge: React.FC<BadgeProps> = ({
+const Badge = ({
   children,
   accessibilityLabel,
   onPress,
   text,
+  icon,
   color,
   ...props
 }: BadgeProps) => {
   return (
     <Pressable
       alignSelf="flex-start"
+      flexDirection="row"
+      justifyContent="center"
+      alignItems="center"
       borderRadius={20}
       overflow="hidden"
       position="relative"
       accessibilityLabel={accessibilityLabel}
       onPress={onPress}
       backgroundColor={color !== "gradient" ? color : undefined}
-      paddingVertical="micro"
+      paddingVertical="xs"
       paddingHorizontal="s"
       {...props}
     >
@@ -42,10 +49,18 @@ const Badge: React.FC<BadgeProps> = ({
           style={StyleSheet.absoluteFill}
         />
       )}
+      {!!icon && icon.isValid() && (
+        <Icon
+          icon={icon}
+          color={color === "gradient" ? "brandActionDark" : "white"}
+          size="xs"
+        />
+      )}
       <Text
-        accessibilityLabel="button-text"
+        accessibilityLabel={text}
         color={color === "gradient" ? "brandActionDark" : "white"}
         preset="micro"
+        paddingLeft={icon ? "xs" : undefined}
       >
         {text}
       </Text>

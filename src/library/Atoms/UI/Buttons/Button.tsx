@@ -1,21 +1,22 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { TextProps } from "@shopify/restyle";
 import theme, { Theme } from "../../../theme";
 import { Pressable, PressableProps } from "../../utility";
+import Icon from "../Assets/Icon/Icon";
 import Text from "../Text/Text";
-import Icon, { IconPayload } from "../Assets/Icon/Icon";
+import { IconPayload } from "../../../../icons";
 import CircleButton from "./CircleButton";
 
 interface ButtonProps extends PressableProps {
   accessibilityLabel: string;
   text?: string;
   textColor?: keyof typeof theme.colors;
-  backgroundColor?: keyof typeof theme.colors;
+  backgroundColor?: keyof typeof theme.colors | "gradient";
   icon?: IconPayload;
   fullWidth?: boolean;
-  gradient?: boolean;
   animated?: boolean;
   children?: React.ReactNode;
 }
@@ -29,13 +30,15 @@ const Button: React.FC<Props> = ({
   text,
   icon,
   backgroundColor = "brandAction",
-  textColor = "brandActionDark",
+  textColor = "white",
   animated,
   fullWidth,
-  gradient,
   ...props
 }: Props) => {
-  if (icon && icon.isValid() && !text) {
+  const gradient = backgroundColor === "gradient";
+  if (gradient) textColor = "brandActionDark";
+
+  if (icon && icon.isValid() && !text && backgroundColor !== "gradient") {
     return (
       <CircleButton
         accessibilityLabel={accessibilityLabel}
@@ -46,72 +49,45 @@ const Button: React.FC<Props> = ({
       />
     );
   }
-  if (gradient) {
-    return (
-      <Pressable accessibilityLabel={accessibilityLabel} onPress={onPress}>
+
+  return (
+    <Pressable
+      accessibilityLabel={accessibilityLabel}
+      onPress={onPress}
+      marginVertical="xs"
+      paddingHorizontal="l"
+      backgroundColor={gradient ? undefined : backgroundColor}
+      alignSelf={!fullWidth ? "flex-start" : undefined}
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="row"
+      borderRadius={20}
+      height={40}
+      overflow="hidden"
+      {...props}
+    >
+      {gradient && (
         <LinearGradient
           colors={["rgba(23, 161, 101, 0.095)", "rgba(104, 237, 180, 0.065)"]}
           start={{ x: 0.5, y: 1 }}
           end={{ x: 0.625, y: 0 }}
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "row",
-            alignSelf: !fullWidth ? "flex-start" : undefined,
-            height: 40,
-            borderRadius: 20,
-            paddingHorizontal: theme.spacing.l,
-            marginVertical: theme.spacing.xs,
-          }}
-        >
-          {!!icon && icon.isValid() && (
-            <Icon icon={icon} color={textColor} size="s" />
-          )}
-          <Text
-            accessibilityLabel="button-text"
-            color={textColor}
-            preset="button"
-            style={{
-              paddingLeft: icon ? 8 : undefined,
-            }}
-          >
-            {text}
-          </Text>
-        </LinearGradient>
-      </Pressable>
-    );
-  } else {
-    return (
-      <Pressable
-        accessibilityLabel={accessibilityLabel}
-        onPress={onPress}
-        marginVertical="xs"
-        paddingHorizontal="l"
-        backgroundColor={backgroundColor}
-        alignSelf={!fullWidth ? "flex-start" : undefined}
-        alignItems="center"
-        justifyContent="center"
-        flexDirection="row"
-        borderRadius={20}
-        height={40}
-        {...props}
+          style={StyleSheet.absoluteFill}
+        />
+      )}
+
+      {!!icon && icon.isValid() && (
+        <Icon icon={icon} color={textColor} size="xs" />
+      )}
+      <Text
+        accessibilityLabel="button-text"
+        color={textColor}
+        preset="button"
+        paddingLeft={icon ? "m" : undefined}
       >
-        {!!icon && icon.isValid() && (
-          <Icon icon={icon} color="white" size="s" />
-        )}
-        <Text
-          accessibilityLabel="button-text"
-          color="white"
-          preset="button"
-          style={{
-            paddingLeft: !!icon ? 8 : undefined,
-          }}
-        >
-          {text}
-        </Text>
-      </Pressable>
-    );
-  }
+        {text}
+      </Text>
+    </Pressable>
+  );
 };
 
 export default Button;

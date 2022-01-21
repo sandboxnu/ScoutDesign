@@ -1,7 +1,8 @@
 import React from "react";
 import { Animated, Easing, TouchableOpacity, View } from "react-native";
 import theme from "../../../theme";
-import Icon, { IconPayload } from "../Assets/Icon/Icon";
+import { IconPayload } from "../../../../icons";
+import Icon from "../Assets/Icon/Icon";
 
 export type CircleButtonProps = {
   accessibilityLabel: string;

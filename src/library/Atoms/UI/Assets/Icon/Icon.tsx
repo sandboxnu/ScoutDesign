@@ -3,29 +3,9 @@ import {
   Pressable,
   AssetProps,
   PressableProps,
-  Radius,
-  SizePresets,
   mapRadius,
 } from "../../../utility";
-
-type IconPayloadType = {
-  name: string;
-  library: React.ElementType;
-};
-
-export class IconPayload {
-  name: string;
-  component: React.ElementType;
-
-  constructor(icon: IconPayloadType) {
-    this.name = icon.name;
-    this.component = (props) => <icon.library {...props} />;
-  }
-
-  isValid() {
-    return this.name && this.component;
-  }
-}
+import { IconPayload } from "../../../../../icons";
 
 interface Props extends AssetProps, PressableProps {
   icon: IconPayload;

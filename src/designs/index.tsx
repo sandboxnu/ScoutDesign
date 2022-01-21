@@ -4,6 +4,7 @@ import Constants from "expo-constants";
 
 import { Badge, Button, LineItem, Text, Icon, Image } from "../library";
 import {
+  bonfire,
   gearThin,
   light,
   plusBold,
@@ -51,6 +52,7 @@ const DesignSystem = () => {
       <Badge
         accessibilityLabel="campout-solid-badge"
         text="Campout"
+        icon={bonfire}
         color="gradient"
       />
 
@@ -77,7 +79,7 @@ const DesignSystem = () => {
         accessibilityLabel="gradient-full-width"
         text="Confirm"
         fullWidth
-        gradient
+        backgroundColor="gradient"
         onPress={() => {}}
       />
       <Button
@@ -97,14 +99,23 @@ const DesignSystem = () => {
         accessibilityLabel="gradient-add-location"
         text="Location"
         icon={plusBold}
-        gradient
+        backgroundColor="gradient"
         onPress={() => {}}
       />
       <Button
         accessibilityLabel="add-icon-circle-button"
         icon={plusThin}
-        gradient
         onPress={() => {}}
+      />
+      <Image
+        accessibilityLabel="user-profile"
+        radius="m"
+        onPress={() => {}}
+        size="xl"
+        source={{
+          uri: "https://picsum.photos/500",
+        }}
+        title="Hike"
       />
       <View
         style={{ position: "absolute", bottom: 35, right: 25, zIndex: 1000000 }}
@@ -114,7 +125,6 @@ const DesignSystem = () => {
           icon={plusThin}
           backgroundColor="question"
           animated
-          gradient
           onPress={() => {}}
         />
       </View>
@@ -172,6 +182,7 @@ const DesignSystem = () => {
             onPress={() => {}}
             accessibilityLabel="campout-solid-badge"
             text="Campout"
+            icon={bonfire}
             color="questionDark"
           />
         }
@@ -181,17 +192,6 @@ const DesignSystem = () => {
           Troop 318
         </LineItem.Heading>
       </LineItem>
-
-      <Image
-        accessibilityLabel="user-profile"
-        radius="m"
-        onPress={() => {}}
-        size="xl"
-        source={{
-          uri: "https://picsum.photos/500",
-        }}
-        title="Hike"
-      />
     </ScrollView>
   );
 };

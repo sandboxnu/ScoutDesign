@@ -9,8 +9,8 @@ export type SizePresets = "xs" | "s" | "m" | "l" | "xl";
 
 export type StandardRadius = "xs" | "s" | "m" | "l" | "xl";
 export type ExtendedRadius =
-  | "circle"
   | "default"
+  | "circle"
   | "xs"
   | "s"
   | "m"
@@ -28,13 +28,14 @@ export const mapRadius = (
   }
 
   if (size) {
+    // If size is not a Dimension
     if (typeof size === "string") {
       if (radius === "default") {
-        return theme.fixedCornerSizes[size];
+        return theme.radii[size];
       } else if (radius === "circle") {
         return theme.assetSizes[size];
       } else {
-        return theme.fixedCornerSizes[radius];
+        return theme.radii[radius];
       }
     }
     // If size is type Dimensions
@@ -44,14 +45,17 @@ export const mapRadius = (
           return size.height / 2;
         }
       } else {
-        return theme.fixedCornerSizes.xl;
+        return theme.radii.xl;
       }
     }
   } else {
     if (radius === "circle" || radius === "default") {
+      console.warn(
+        "You cannot pass 'circle' or 'default' if no size is specified."
+      );
       return undefined;
     } else {
-      return theme.fixedCornerSizes[radius];
+      return theme.radii[radius];
     }
   }
 };
