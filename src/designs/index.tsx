@@ -5,6 +5,8 @@ import Constants from "expo-constants";
 import {
   Badge,
   Button,
+  CircleButton,
+  DismissButton,
   LineItem,
   Text,
   Icon,
@@ -12,9 +14,11 @@ import {
   Avatar,
   Card,
 } from "../library";
+
 import {
   bonfire,
   checkmark,
+  compass,
   gearThin,
   light,
   plusBold,
@@ -113,7 +117,7 @@ const DesignSystem = () => {
         backgroundColor="gradient"
         onPress={() => {}}
       />
-      <Button
+      <CircleButton
         accessibilityLabel="add-icon-circle-button"
         icon={plusThin}
         onPress={() => {}}
@@ -128,17 +132,15 @@ const DesignSystem = () => {
         }}
         title="Hike"
       />
-      <View
-        style={{ position: "absolute", bottom: 35, right: 25, zIndex: 1000000 }}
-      >
-        <Button
-          accessibilityLabel="add-icon-circle-button"
-          icon={plusThin}
-          backgroundColor="question"
-          animated
-          onPress={() => {}}
-        />
-      </View>
+      <CircleButton
+        accessibilityLabel="add-icon-circle-button"
+        icon={plusThin}
+        backgroundColor="question"
+        animated
+        onPress={() => {}}
+        corner="bottom-right"
+        distanceFromCorner="l"
+      />
       <LineItem
         accessibilityLabel="basic-line-item"
         type="static"
@@ -153,7 +155,6 @@ const DesignSystem = () => {
         rightComponent={
           <Icon icon={gearThin} color="darkGrey" size="l" onPress={() => {}} />
         }
-        topBorder
       >
         <LineItem.Heading accessibilityLabel="user-name">
           Kaleb Davenport
@@ -178,17 +179,11 @@ const DesignSystem = () => {
         type="static"
         backgroundColor="white"
         leftComponent={
-          <Icon
-            radius="circle"
-            backgroundColor="white"
-            icon={light}
-            color="darkGrey"
-            size="s"
-          />
+          <Icon radius="circle" icon={compass} color="darkGrey" size="m" />
         }
         radius="m"
       >
-        <LineItem.Heading accessibilityLabel="troop-319">
+        <LineItem.Heading accessibilityLabel="troop-name">
           Troop 318
         </LineItem.Heading>
       </LineItem>

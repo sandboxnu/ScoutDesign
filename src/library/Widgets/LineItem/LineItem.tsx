@@ -76,12 +76,7 @@ const LineItem = ({
       {...rest}
     >
       {topBorder && (
-        <Box
-          height={0}
-          borderTopColor="slateGrey"
-          borderTopWidth={0.25}
-          marginHorizontal="l"
-        />
+        <Box height={0} borderTopColor="slateGrey" borderTopWidth={0.25} />
       )}
       <Box
         paddingVertical="xs"

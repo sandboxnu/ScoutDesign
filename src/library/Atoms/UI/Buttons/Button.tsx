@@ -8,7 +8,6 @@ import { Pressable, PressableProps } from "../../utility";
 import Icon from "../Assets/Icon/Icon";
 import Text from "../Text/Text";
 import { IconPayload } from "../../../../icons";
-import CircleButton from "./CircleButton";
 
 interface ButtonProps extends PressableProps {
   accessibilityLabel: string;
@@ -21,7 +20,7 @@ interface ButtonProps extends PressableProps {
   children?: React.ReactNode;
 }
 
-type Props = ButtonProps & TextProps<Theme> & {};
+type Props = ButtonProps & TextProps<Theme>;
 
 const Button: React.FC<Props> = ({
   children,
@@ -37,18 +36,6 @@ const Button: React.FC<Props> = ({
 }: Props) => {
   const gradient = backgroundColor === "gradient";
   if (gradient) textColor = "brandActionDark";
-
-  if (icon && icon.isValid() && !text && backgroundColor !== "gradient") {
-    return (
-      <CircleButton
-        accessibilityLabel={accessibilityLabel}
-        backgroundColor={backgroundColor}
-        icon={icon}
-        onPress={() => {}}
-        animated={animated}
-      />
-    );
-  }
 
   return (
     <Pressable

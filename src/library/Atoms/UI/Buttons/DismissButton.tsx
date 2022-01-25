@@ -1,26 +1,23 @@
 import React from "react";
-import { View } from "react-native";
 import Icon from "../Assets/Icon/Icon";
-import theme from "../../../theme";
 import { close, IconPayload } from "../../../../icons";
-import { SizePresets } from "../../utility";
+import { Floatable, FloatableProps, SizePresets } from "../../utility";
 
 export interface DismissableProps {
   dismissComponent?: IconPayload;
   onDismiss?: () => void;
 }
 
-type Props = DismissableProps & {
-  absolute?: boolean;
-};
+type DismissButtonProps = DismissableProps & FloatableProps;
 
 const DismissButton = ({
-  absolute = false,
   dismissComponent,
   onDismiss,
-}: Props) => {
+  corner,
+  distanceFromCorner,
+}: DismissButtonProps) => {
   return (
-    <View style={{ zIndex: absolute ? 10 : undefined }}>
+    <Floatable corner={corner} distanceFromCorner={distanceFromCorner}>
       <Icon
         radius="circle"
         backgroundColor="lightMintGrey"
@@ -29,7 +26,7 @@ const DismissButton = ({
         size="xs"
         onPress={onDismiss}
       />
-    </View>
+    </Floatable>
   );
 };
 

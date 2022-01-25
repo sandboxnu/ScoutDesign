@@ -3,80 +3,85 @@ import { Animated, Easing, TouchableOpacity, View } from "react-native";
 import theme from "../../../theme";
 import { IconPayload } from "../../../../icons";
 import Icon from "../Assets/Icon/Icon";
+import { Floatable, PressableProps, FloatableProps } from "../../utility";
 
-export type CircleButtonProps = {
+interface CircleButtonProps extends PressableProps, FloatableProps {
   accessibilityLabel: string;
   icon: IconPayload;
-  onPress: any;
-  backgroundColor: keyof typeof theme.colors;
+  onPress: () => void;
+  backgroundColor?: keyof typeof theme.colors;
   animated?: boolean;
-};
+}
 
 const CircleButton = ({
   accessibilityLabel,
-  backgroundColor,
+  backgroundColor = "brandAction",
   icon,
   onPress,
   animated,
+  corner,
+  distanceFromCorner,
 }: CircleButtonProps) => {
   const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
   let scaleValue = new Animated.Value(0);
   const cardScale = scaleValue.interpolate({
-    inputRange: [0, 0.25, 0.5, 0.99, 1],
-    outputRange: [1, 3, 25, 40, 1],
+    inputRange: [0, 0.25, 0.5, 0.999, 1],
+    outputRange: [1, 3, 25, 45, 1],
   });
 
   return (
-    <View
-      nativeID={accessibilityLabel}
-      style={{
-        position: "relative",
-        alignSelf: "flex-start",
-        marginVertical: theme.spacing.xs,
-      }}
-    >
-      <AnimatedTouchable
+    <Floatable corner={corner} distanceFromCorner={distanceFromCorner}>
+      <View
+        nativeID={accessibilityLabel}
         style={{
-          height: 50,
-          width: 50,
-          borderRadius: 25,
-          transform: [{ scale: cardScale }],
-          backgroundColor: theme.colors[backgroundColor],
+          position: "relative",
+          alignSelf: "flex-start",
+          marginVertical: theme.spacing.xs,
         }}
-      />
-      <AnimatedTouchable
-        onPress={() => {
-          scaleValue.setValue(0);
-          animated &&
-            Animated.timing(scaleValue, {
-              toValue: 1,
-              duration: 650,
-              easing: Easing.linear,
-              useNativeDriver: true,
-            }).start();
-          return setTimeout(() => {
-            onPress();
-          }, 300);
-        }}
-        style={[
-          {
+      >
+        <AnimatedTouchable
+          style={{
             height: 50,
             width: 50,
             borderRadius: 25,
-            backgroundColor: backgroundColor,
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            left: 0,
-            top: 0,
-            right: 0,
-          },
-        ]}
-      >
-        <Icon icon={icon} color="white" size="m" />
-      </AnimatedTouchable>
-    </View>
+            transform: [{ scale: cardScale }],
+            backgroundColor: theme.colors[backgroundColor],
+          }}
+        />
+        <AnimatedTouchable
+          onPress={() => {
+            scaleValue.setValue(0);
+            animated &&
+              Animated.timing(scaleValue, {
+                toValue: 1,
+                duration: 700,
+                easing: Easing.linear,
+                useNativeDriver: true,
+              }).start();
+            return setTimeout(() => {
+              onPress();
+            }, 300);
+          }}
+          style={[
+            {
+              height: 50,
+              width: 50,
+              borderRadius: 25,
+              backgroundColor: backgroundColor,
+              justifyContent: "center",
+              alignItems: "center",
+              position: "absolute",
+              left: 0,
+              top: 0,
+              right: 0,
+            },
+          ]}
+        >
+          <Icon icon={icon} color="white" size="m" />
+        </AnimatedTouchable>
+      </View>
+    </Floatable>
   );
 };
 
