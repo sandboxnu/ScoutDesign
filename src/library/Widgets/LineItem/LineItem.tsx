@@ -84,6 +84,7 @@ const LineItem = ({
       )}
       <Box
         paddingVertical="xs"
+        paddingBottom={bottomBorder ? "s" : undefined}
         marginHorizontal={simpleRow ? undefined : "m"}
         alignItems="center"
         justifyContent="space-between"
@@ -118,9 +119,8 @@ const LineItem = ({
       {bottomBorder && (
         <Box
           height={0}
-          borderBottomColor="slateGrey"
+          borderBottomColor="mediumGrey"
           borderBottomWidth={0.25}
-          marginHorizontal="l"
         />
       )}
     </Pressable>

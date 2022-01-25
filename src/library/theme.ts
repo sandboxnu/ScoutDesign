@@ -92,7 +92,7 @@ const theme = createTheme({
   assetSizes: {
     micro: 9,
     xs: 14,
-    s: 20,
+    s: 21,
     m: 24,
     l: 30,
     xl: 140,

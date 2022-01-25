@@ -1,4 +1,5 @@
 import {
+  FontAwesome5,
   MaterialCommunityIcons,
   Foundation,
   Ionicons,
@@ -28,6 +29,11 @@ export class IconPayload {
 
 export const bonfire = new IconPayload({
   name: "bonfire",
+  library: Ionicons,
+});
+
+export const checkmark = new IconPayload({
+  name: "checkmark-sharp",
   library: Ionicons,
 });
 

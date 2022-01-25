@@ -2,9 +2,19 @@ import React from "react";
 import { View, ScrollView, Dimensions } from "react-native";
 import Constants from "expo-constants";
 
-import { Badge, Button, LineItem, Text, Icon, Image, Card } from "../library";
+import {
+  Badge,
+  Button,
+  LineItem,
+  Text,
+  Icon,
+  Image,
+  Avatar,
+  Card,
+} from "../library";
 import {
   bonfire,
+  checkmark,
   gearThin,
   light,
   plusBold,
@@ -133,9 +143,7 @@ const DesignSystem = () => {
         accessibilityLabel="basic-line-item"
         type="static"
         leftComponent={
-          <Image
-            accessibilityLabel="user-profile"
-            radius="circle"
+          <Avatar
             size="m"
             source={{
               uri: "https://picsum.photos/28",
@@ -210,6 +218,30 @@ const DesignSystem = () => {
             uri: "https://picsum.photos/1000",
           }}
         />
+        <Card.Description
+          sameLine
+          heading="Tennessee Falls Trip"
+          bodyText={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus"
+          }
+        />
+      </Card>
+      <Card
+        accessibilityLabel="solid card"
+        title="June 10th at 8:45 am"
+        headerLeft={
+          <Avatar
+            size="s"
+            source={{
+              uri: "https://picsum.photos/28",
+            }}
+          />
+        }
+        alignChildren="center"
+        dismissComponent={checkmark}
+        onDismiss={() => {}}
+        borderBelowHeader
+      >
         <Card.Description
           heading="Tennessee Falls Trip"
           bodyText={

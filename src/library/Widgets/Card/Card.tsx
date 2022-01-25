@@ -1,36 +1,26 @@
 import React, { Children } from "react";
+import Swipeable from "react-native-gesture-handler/Swipeable";
+import { SwipeableProps } from "../Swipable";
 
 import { Box, mapRadius, Pressable, PressableProps } from "../../Atoms/utility";
 import Text from "../../Atoms/UI/Text/Text";
 import LineItem from "../../Widgets/LineItem/LineItem";
 import DismissButton, {
   DismissableProps,
-} from "../../Atoms/utility/Dismissable/Dismissable";
+} from "../../Atoms/UI/Buttons/DismissButton";
 
 import { Theme } from "../../theme";
-import {
-  useRestyle,
-  spacing,
-  border,
-  layout,
-  position,
-  backgroundColor,
-  SpacingProps,
-  LayoutProps,
-  PositionProps,
-  BorderProps,
-  BackgroundColorProps,
-} from "@shopify/restyle";
+import { BackgroundColorProps } from "@shopify/restyle";
 
-interface CardProps extends PressableProps, DismissableProps {
+interface CardProps extends PressableProps, DismissableProps, SwipeableProps {
   accessibilityLabel: string;
   border?: boolean;
   shadow?: boolean;
   title?: string;
-  dismissComponent?: React.ReactNode;
   headerLeft: React.ReactNode;
   children?: any;
   alignChildren?: "flex-start" | "center" | "flex-end";
+  borderBelowHeader?: boolean;
 }
 
 type Props = CardProps & BackgroundColorProps<Theme>;
@@ -43,40 +33,57 @@ function Card({
   alignChildren,
   dismissComponent,
   onDismiss,
+  borderBelowHeader,
   ...rest
 }: Props) {
   return (
-    <Pressable
-      paddingHorizontal="m"
-      paddingVertical="s"
-      borderRadius={mapRadius("l")}
-      justifyContent="center"
-      accessibilityLabel={accessibilityLabel}
-      borderColor="mediumGrey"
-      borderWidth={0.25}
-      backgroundColor="white"
-      {...rest}
+    <Swipeable
+      renderRightActions={onDismiss ? () => <Box flex={1} /> : undefined}
+      onSwipeableRightOpen={onDismiss}
+      onSwipeableLeftOpen={onDismiss}
     >
-      <LineItem
-        type="simpleRow"
-        accessibilityLabel="card-header"
-        rightComponent={
-          <DismissButton
-            dismissComponent={dismissComponent}
-            onDismiss={onDismiss ? onDismiss : () => {}}
-          />
-        }
-        leftComponent={headerLeft}
-        alignChildren={alignChildren}
+      <Pressable
+        marginVertical="s"
+        paddingHorizontal="m"
+        paddingVertical="s"
+        borderRadius={mapRadius("l")}
+        justifyContent="center"
+        accessibilityLabel={accessibilityLabel}
+        borderColor="slateGrey"
+        borderWidth={0.25}
+        backgroundColor="white"
+        {...rest}
       >
-        <LineItem.Subheading accessibilityLabel="card-title">
-          {title}
-        </LineItem.Subheading>
-      </LineItem>
-      {Children.map(children, (child) => {
-        return <Box marginVertical="xs">{child}</Box>;
-      })}
-    </Pressable>
+        <LineItem
+          type="simpleRow"
+          accessibilityLabel="card-header"
+          rightComponent={
+            onDismiss ? (
+              <DismissButton
+                dismissComponent={dismissComponent}
+                onDismiss={onDismiss}
+              />
+            ) : undefined
+          }
+          leftComponent={headerLeft}
+          alignChildren={alignChildren}
+          bottomBorder={borderBelowHeader}
+        >
+          <LineItem.Subheading accessibilityLabel="card-title">
+            {title}
+          </LineItem.Subheading>
+        </LineItem>
+        <Box paddingVertical="micro">
+          {Children.map(children, (child) => {
+            return (
+              <Box marginTop="xs" marginBottom="micro">
+                {child}
+              </Box>
+            );
+          })}
+        </Box>
+      </Pressable>
+    </Swipeable>
   );
 }
 
@@ -88,7 +95,7 @@ type DescriptionProps = {
 
 const Description = ({
   heading,
-  sameLine = true,
+  sameLine = false,
   bodyText,
 }: DescriptionProps) => {
   if (sameLine) {
@@ -106,7 +113,9 @@ const Description = ({
       <Text accessibilityLabel="heading" size="l" weight="bold">
         {heading}
       </Text>
-      <Text accessibilityLabel="card-description">{bodyText}</Text>
+      <Text accessibilityLabel="card-description" paddingTop="micro">
+        {bodyText}
+      </Text>
     </>
   );
 };

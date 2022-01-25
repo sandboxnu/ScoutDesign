@@ -1,4 +1,5 @@
 import React from "react";
+import "react-native-gesture-handler";
 import { ThemeProvider } from "@shopify/restyle";
 import { useFonts } from "expo-font";
 

@@ -1,10 +1,12 @@
 import React from "react";
 import { View } from "react-native";
-import Icon from "../../UI/Assets/Icon/Icon";
-import { close } from "../../../../icons";
+import Icon from "../Assets/Icon/Icon";
+import theme from "../../../theme";
+import { close, IconPayload } from "../../../../icons";
+import { SizePresets } from "../../utility";
 
 export interface DismissableProps {
-  dismissComponent?: React.ReactNode;
+  dismissComponent?: IconPayload;
   onDismiss?: () => void;
 }
 
@@ -22,7 +24,7 @@ const DismissButton = ({
       <Icon
         radius="circle"
         backgroundColor="lightMintGrey"
-        icon={close}
+        icon={dismissComponent ? dismissComponent : close}
         color="darkGrey"
         size="xs"
         onPress={onDismiss}
