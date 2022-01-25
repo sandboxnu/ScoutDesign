@@ -4,6 +4,8 @@ import { Theme } from "../../../theme";
 
 const Text = createText<Theme>();
 
+export type TextAlignmentWithinContainer = "right" | "center" | "left";
+
 type weights = "bold" | "regular" | "light";
 type sizes = "s" | "m" | "l";
 type presets =

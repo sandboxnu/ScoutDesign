@@ -237,7 +237,7 @@ const DesignSystem = () => {
             }}
           />
         }
-        alignChildren="center"
+        titleAlignment="center"
         dismissComponent={checkmark}
         onDismiss={() => {}}
         borderBelowHeader

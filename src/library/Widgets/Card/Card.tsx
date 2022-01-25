@@ -1,9 +1,8 @@
 import React, { Children } from "react";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { SwipeableProps } from "../Swipable";
 
 import { Box, mapRadius, Pressable, PressableProps } from "../../Atoms/utility";
-import Text from "../../Atoms/UI/Text/Text";
+import Text, { TextAlignmentWithinContainer } from "../../Atoms/UI/Text/Text";
 import LineItem from "../../Widgets/LineItem/LineItem";
 import DismissButton, {
   DismissableProps,
@@ -12,14 +11,14 @@ import DismissButton, {
 import { Theme } from "../../theme";
 import { BackgroundColorProps } from "@shopify/restyle";
 
-interface CardProps extends PressableProps, DismissableProps, SwipeableProps {
+interface CardProps extends PressableProps, DismissableProps {
   accessibilityLabel: string;
   border?: boolean;
   shadow?: boolean;
   title?: string;
   headerLeft: React.ReactNode;
   children?: any;
-  alignChildren?: "flex-start" | "center" | "flex-end";
+  titleAlignment?: TextAlignmentWithinContainer;
   borderBelowHeader?: boolean;
 }
 
@@ -30,7 +29,7 @@ function Card({
   title,
   headerLeft,
   children,
-  alignChildren,
+  titleAlignment,
   dismissComponent,
   onDismiss,
   borderBelowHeader,
@@ -66,7 +65,7 @@ function Card({
             ) : undefined
           }
           leftComponent={headerLeft}
-          alignChildren={alignChildren}
+          childrenAlignment={titleAlignment}
           bottomBorder={borderBelowHeader}
         >
           <LineItem.Subheading accessibilityLabel="card-title">

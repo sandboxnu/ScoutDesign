@@ -3,7 +3,8 @@ import React, { useState } from "react";
 
 import theme from "../../theme";
 import { Box, mapRadius, StandardRadius } from "../../Atoms/utility";
-import { Text, Icon } from "../../Atoms/UI";
+import Text, { TextAlignmentWithinContainer } from "../../Atoms/UI/Text/Text";
+import Icon from "../../Atoms/UI/Assets/Icon/Icon";
 import { upCaret, downCaret } from "../../../icons";
 import { Pressable, PressableProps } from "../../Atoms/utility";
 
@@ -33,7 +34,7 @@ interface Props extends PressableProps {
   backgroundColor?: keyof typeof theme.colors;
   radius?: StandardRadius;
   children?: any;
-  alignChildren?: "flex-start" | "center" | "flex-end";
+  childrenAlignment?: TextAlignmentWithinContainer;
 }
 
 /** ListItems display a row of information, such as a list of troops
@@ -49,7 +50,7 @@ const LineItem = ({
   topBorder,
   radius,
   children,
-  alignChildren = "flex-start",
+  childrenAlignment = "left",
   ...rest
 }: Props) => {
   const accordion = type === "accordion";
@@ -103,7 +104,7 @@ const LineItem = ({
             flex={1}
             flexDirection="column"
             justifyContent="center"
-            alignItems={alignChildren}
+            alignItems={theme.alignments[childrenAlignment]}
             marginVertical={topBorder ? "xs" : undefined}
           >
             {children}

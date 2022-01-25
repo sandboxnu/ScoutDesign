@@ -1,3 +1,4 @@
+import { FlexAlignType } from "react-native";
 import { createTheme } from "@shopify/restyle";
 
 const palette = {
@@ -33,6 +34,18 @@ const palette = {
 
   offWhite: "#F8FCFA",
   white: "#FFFFFF",
+};
+
+type Alignments = {
+  left: FlexAlignType;
+  center: FlexAlignType;
+  right: FlexAlignType;
+};
+
+const alignments: Alignments = {
+  left: "flex-start",
+  center: "center",
+  right: "flex-end",
 };
 
 const theme = createTheme({
@@ -81,6 +94,7 @@ const theme = createTheme({
     xl: 40,
     xxl: 96,
   },
+  alignments,
   radii: {
     micro: 1,
     xs: 2,
