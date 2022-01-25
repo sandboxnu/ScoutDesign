@@ -28,7 +28,8 @@ const palette = {
   slateGrey: "#738487",
   mediumGrey: "#B3CCC8",
   mintGrey: "#DBE6E1",
-  lightMintGrey: "#F5F5F5",
+  lightMintGrey: "#F4F6F5",
+  lightRedGrey: "#F7F3F3",
 
   offWhite: "#F8FCFA",
   white: "#FFFFFF",
@@ -81,6 +82,7 @@ const theme = createTheme({
     xxl: 96,
   },
   radii: {
+    micro: 1,
     xs: 2,
     s: 4,
     m: 7,
@@ -88,9 +90,10 @@ const theme = createTheme({
     xl: 18,
   },
   assetSizes: {
-    xs: 16,
+    micro: 9,
+    xs: 14,
     s: 20,
-    m: 25,
+    m: 24,
     l: 30,
     xl: 140,
   },
@@ -123,8 +126,8 @@ const theme = createTheme({
       fontWeight: "600",
     },
     micro: {
-      fontSize: 14,
-      lineHeight: 14,
+      fontSize: 13,
+      lineHeight: 13,
       fontFamily: "metropolis-bold",
     },
 
@@ -195,21 +198,6 @@ const theme = createTheme({
     },
     "s-light": {
       fontSize: 15,
-      fontFamily: "open-sans-light",
-      fontWeight: "300",
-    },
-
-    "xs-bold": {
-      fontSize: 10,
-      fontFamily: "open-sans-bold",
-      fontWeight: "bold",
-    },
-    "xs-regular": {
-      fontSize: 10,
-      fontFamily: "open-sans-regular",
-    },
-    "xs-light": {
-      fontSize: 10,
       fontFamily: "open-sans-light",
       fontWeight: "300",
     },

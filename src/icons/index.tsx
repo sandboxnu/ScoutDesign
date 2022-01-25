@@ -4,6 +4,7 @@ import {
   Ionicons,
   EvilIcons,
   Entypo,
+  Octicons,
 } from "@expo/vector-icons";
 
 export type IconPayloadType = {
@@ -26,7 +27,12 @@ export class IconPayload {
 }
 
 export const bonfire = new IconPayload({
-  name: "bonfire-outline",
+  name: "bonfire",
+  library: Ionicons,
+});
+
+export const close = new IconPayload({
+  name: "close",
   library: Ionicons,
 });
 
@@ -38,6 +44,11 @@ export const compass = new IconPayload({
 export const downCaret = new IconPayload({
   name: "chevron-thin-down",
   library: Entypo,
+});
+
+export const dot = new IconPayload({
+  name: "primitive-dot",
+  library: Octicons,
 });
 
 export const gearThin = new IconPayload({

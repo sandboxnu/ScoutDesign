@@ -23,7 +23,7 @@ type LineItemHeadingProps = {
 
 interface Props extends PressableProps {
   accessibilityLabel: string;
-  type: "button" | "static" | "accordion" | "formField";
+  type: "button" | "static" | "simpleRow" | "accordion" | "formField";
   topBorder?: boolean;
   bottomBorder?: boolean;
   leftComponent?: React.ReactNode;
@@ -33,6 +33,7 @@ interface Props extends PressableProps {
   backgroundColor?: keyof typeof theme.colors;
   radius?: StandardRadius;
   children?: any;
+  alignChildren?: "flex-start" | "center" | "flex-end";
 }
 
 /** ListItems display a row of information, such as a list of troops
@@ -48,9 +49,11 @@ const LineItem = ({
   topBorder,
   radius,
   children,
+  alignChildren = "flex-start",
   ...rest
 }: Props) => {
   const accordion = type === "accordion";
+  const simpleRow = type === "simpleRow";
   const [accordionIsOpen, setAccordionIsOpen] = useState(false);
 
   if (type === "accordion" && !accordionContent) {
@@ -64,7 +67,7 @@ const LineItem = ({
       accessibilityLabel={accessibilityLabel}
       justifyContent="center"
       flexDirection="column"
-      marginVertical="s"
+      marginVertical={simpleRow ? undefined : "s"}
       borderRadius={mapRadius(radius)}
       sideEffect={
         accordion ? () => setAccordionIsOpen((prev) => !prev) : undefined
@@ -81,25 +84,25 @@ const LineItem = ({
       )}
       <Box
         paddingVertical="xs"
-        marginHorizontal="m"
+        marginHorizontal={simpleRow ? undefined : "m"}
         alignItems="center"
         justifyContent="space-between"
         flexDirection="row"
         flex={1}
       >
         <Box
-          paddingVertical={topBorder ? "micro" : "s"}
+          paddingVertical={simpleRow ? undefined : topBorder ? "micro" : "s"}
           flex={1}
           alignItems="center"
           flexDirection="row"
         >
           {leftComponent}
           <Box
-            paddingLeft="m"
+            paddingHorizontal="m"
             flex={1}
             flexDirection="column"
             justifyContent="center"
-            alignItems="flex-start"
+            alignItems={alignChildren}
             marginVertical={topBorder ? "xs" : undefined}
           >
             {children}

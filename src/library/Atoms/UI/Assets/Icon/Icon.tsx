@@ -1,17 +1,20 @@
-import theme from "../../../../theme";
+import theme, { Theme } from "../../../../theme";
 import {
   Pressable,
   AssetProps,
   PressableProps,
   mapRadius,
 } from "../../../utility";
+import { SpacingProps } from "@shopify/restyle";
 import { IconPayload } from "../../../../../icons";
 
-interface Props extends AssetProps, PressableProps {
+interface IconProps extends AssetProps, PressableProps {
   icon: IconPayload;
   color: keyof typeof theme.colors;
   backgroundColor?: keyof typeof theme.colors;
 }
+
+type Props = IconProps & SpacingProps<Theme>;
 
 const Icon = ({
   radius,

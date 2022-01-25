@@ -5,7 +5,7 @@ export type Dimensions = {
   height: number;
 };
 
-export type SizePresets = "xs" | "s" | "m" | "l" | "xl";
+export type SizePresets = "micro" | "xs" | "s" | "m" | "l" | "xl";
 
 export type StandardRadius = "xs" | "s" | "m" | "l" | "xl";
 export type ExtendedRadius =
@@ -43,9 +43,13 @@ export const mapRadius = (
       if (radius === "circle") {
         if (size.height === size.width) {
           return size.height / 2;
+        } else {
+          return theme.radii.xl;
         }
-      } else {
+      } else if (radius === "default") {
         return theme.radii.xl;
+      } else {
+        return theme.radii[radius];
       }
     }
   } else {

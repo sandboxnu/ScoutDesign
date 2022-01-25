@@ -2,7 +2,7 @@ import React from "react";
 import { View, ScrollView, Dimensions } from "react-native";
 import Constants from "expo-constants";
 
-import { Badge, Button, LineItem, Text, Icon, Image } from "../library";
+import { Badge, Button, LineItem, Text, Icon, Image, Card } from "../library";
 import {
   bonfire,
   gearThin,
@@ -12,13 +12,14 @@ import {
   searchThin,
   trash,
 } from "../icons";
+import theme from "../library/theme";
 
 // There is currently no way to move an image around under the clipping mask. It's centered and that's the only option. If anyone knows how to move the image so I could pass "bottom center" and have the image anchored at the bottom and center that would be great, hmu
 
 const DesignSystem = () => {
   return (
     <ScrollView
-      style={{ flex: 1 }}
+      style={{ flex: 1, backgroundColor: theme.colors.lightMintGrey }}
       contentContainerStyle={{
         paddingTop: Constants.statusBarHeight,
         paddingHorizontal: 20,
@@ -142,7 +143,7 @@ const DesignSystem = () => {
           />
         }
         rightComponent={
-          <Icon icon={gearThin} color="black" size="l" onPress={() => {}} />
+          <Icon icon={gearThin} color="darkGrey" size="l" onPress={() => {}} />
         }
         topBorder
       >
@@ -166,8 +167,8 @@ const DesignSystem = () => {
       </LineItem>
       <LineItem
         accessibilityLabel="basic-line-item"
-        type="accordion"
-        backgroundColor="lightMintGrey"
+        type="static"
+        backgroundColor="white"
         leftComponent={
           <Icon
             radius="circle"
@@ -177,7 +178,16 @@ const DesignSystem = () => {
             size="s"
           />
         }
-        accordionContent={
+        radius="m"
+      >
+        <LineItem.Heading accessibilityLabel="troop-319">
+          Troop 318
+        </LineItem.Heading>
+      </LineItem>
+      <Card
+        accessibilityLabel="solid card"
+        title="Friday, June 10th"
+        headerLeft={
           <Badge
             onPress={() => {}}
             accessibilityLabel="campout-solid-badge"
@@ -186,12 +196,27 @@ const DesignSystem = () => {
             color="questionDark"
           />
         }
-        radius="m"
+        onPress={() => {}}
       >
-        <LineItem.Heading accessibilityLabel="troop-319">
-          Troop 318
-        </LineItem.Heading>
-      </LineItem>
+        <Image
+          accessibilityLabel="card-picture"
+          placement="foreground"
+          radius="m"
+          padding="micro"
+          size={{
+            height: 100,
+          }}
+          source={{
+            uri: "https://picsum.photos/1000",
+          }}
+        />
+        <Card.Description
+          heading="Tennessee Falls Trip"
+          bodyText={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus"
+          }
+        />
+      </Card>
     </ScrollView>
   );
 };

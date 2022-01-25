@@ -5,7 +5,7 @@ import { Theme } from "../../../theme";
 const Text = createText<Theme>();
 
 type weights = "bold" | "regular" | "light";
-type sizes = "xs" | "s" | "m" | "l";
+type sizes = "s" | "m" | "l";
 type presets =
   | "h2"
   | "h1"
