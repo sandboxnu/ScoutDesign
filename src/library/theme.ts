@@ -135,7 +135,7 @@ const theme = createTheme({
     },
     button: {
       fontSize: 18,
-      lineHeight: 27,
+      lineHeight: 24,
       fontFamily: "open-sans-bold",
       fontWeight: "600",
     },
@@ -173,6 +173,7 @@ const theme = createTheme({
 
     "l-bold": {
       fontSize: 20,
+      lineHeight: 26,
       fontFamily: "open-sans-bold",
       fontWeight: "bold",
     },

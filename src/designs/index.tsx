@@ -6,7 +6,7 @@ import {
   Badge,
   Button,
   CircleButton,
-  DismissButton,
+  LargeFloatingButton,
   LineItem,
   Text,
   Icon,
@@ -20,7 +20,6 @@ import {
   checkmark,
   compass,
   gearThin,
-  light,
   plusBold,
   plusThin,
   searchThin,
@@ -131,6 +130,14 @@ const DesignSystem = () => {
           uri: "https://picsum.photos/500",
         }}
         title="Hike"
+      />
+      <LargeFloatingButton
+        accessibilityLabel="add event button"
+        text="New Event"
+        icon={plusThin}
+        onPress={() => {}}
+        corner="bottom-left"
+        distanceFromCorner="l"
       />
       <CircleButton
         accessibilityLabel="add-icon-circle-button"
