@@ -24,6 +24,7 @@ interface ImageProps extends AssetProps, PressableProps {
   placement?: "background" | "foreground";
   source: ImageSourcePropType;
   title?: string;
+  overlay?: "light" | "dark";
   PlaceholderComponent?: React.ReactElement;
   resizeMode?: "cover" | "contain" | "stretch" | "center";
 }
@@ -35,6 +36,7 @@ const Image = ({
   placement = "foreground",
   source,
   title,
+  overlay,
   PlaceholderComponent,
   resizeMode = "cover",
   radius,
@@ -42,6 +44,8 @@ const Image = ({
   ...rest
 }: Props) => {
   const foreground = placement === "foreground";
+  const gradientEndColor =
+    overlay === "light" ? "rgba(255, 255, 255, 0.35)" : "rgba(25, 23, 16, 0.9)";
 
   return (
     <Pressable
@@ -61,21 +65,23 @@ const Image = ({
       >
         <RNImage style={StyleSheet.absoluteFillObject} source={source} />
 
-        {title ? (
+        {title || overlay ? (
           <LinearGradient
-            colors={["rgba(32, 32, 32, 0)", "rgba(25, 23, 16, 0.9)"]}
+            colors={["rgba(255, 255, 255, 0.05)", gradientEndColor]}
             style={[
-              StyleSheet.absoluteFillObject,
               {
-                zIndex: 5,
+                zIndex: 1,
                 padding: theme.spacing.m,
                 justifyContent: "flex-end",
               },
+              StyleSheet.absoluteFillObject,
             ]}
           >
-            <Text accessibilityLabel={title} color="white" preset="h2">
-              {title}
-            </Text>
+            {title && (
+              <Text accessibilityLabel={title} color="white" preset="h2">
+                {title}
+              </Text>
+            )}
           </LinearGradient>
         ) : null}
       </Box>

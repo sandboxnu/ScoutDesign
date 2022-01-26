@@ -123,7 +123,7 @@ const DesignSystem = () => {
         onPress={() => {}}
       />
       <Image
-        accessibilityLabel="user-profile"
+        accessibilityLabel="image-tile"
         radius="m"
         onPress={() => {}}
         size="xl"
@@ -212,6 +212,7 @@ const DesignSystem = () => {
           source={{
             uri: "https://picsum.photos/1000",
           }}
+          overlay="light"
         />
         <Card.Description
           sameLine
