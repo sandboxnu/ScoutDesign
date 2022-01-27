@@ -12,3 +12,4 @@ export { default as Avatar } from "./Atoms/UI/Assets/Avatar/Avatar";
 // Widgets
 export { default as LineItem } from "./Widgets/LineItem/LineItem";
 export { default as Card } from "./Widgets/Card/Card";
+export { default as Modal } from "./Widgets/Modal/Modal";

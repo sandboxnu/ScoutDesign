@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useTheme, createText, TextProps } from "@shopify/restyle";
+import React from "react";
+import { createText, TextProps } from "@shopify/restyle";
 import { Theme } from "../../../theme";
 
 const Text = createText<Theme>();
@@ -22,7 +22,7 @@ type presets =
 type shadows = "strong" | "medium" | "subtle";
 
 type textProps = React.ComponentProps<typeof Text> & {
-  accessibilityLabel: string;
+  accessibilityLabel?: string;
   size?: sizes;
   weight?: weights;
   preset?: presets;

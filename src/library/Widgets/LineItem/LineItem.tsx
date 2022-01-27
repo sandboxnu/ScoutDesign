@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 import theme from "../../theme";
-import { Box, mapRadius, StandardRadius } from "../../Atoms/utility";
+import { Box, mapRadius, RadiusProps } from "../../Atoms/utility";
 import Text, { TextAlignmentWithinContainer } from "../../Atoms/UI/Text/Text";
 import Icon from "../../Atoms/UI/Assets/Icon/Icon";
 import { upCaret, downCaret } from "../../../icons";
@@ -16,23 +16,22 @@ const LineItemToggleIcon = ({ open }: { open: boolean }) => {
 };
 
 type LineItemHeadingProps = {
-  accessibilityLabel: string;
   color?: keyof typeof theme.colors;
   weight?: "medium" | "light";
   children: React.ReactNode;
 };
 
-interface Props extends PressableProps {
+interface Props extends PressableProps, RadiusProps {
   accessibilityLabel: string;
   type: "button" | "static" | "simpleRow" | "accordion" | "formField";
   topBorder?: boolean;
   bottomBorder?: boolean;
+  bottomPadding?: keyof typeof theme.spacing;
   leftComponent?: React.ReactNode;
   rightComponent?: React.ReactNode;
   accordionContent?: React.ReactNode;
   textColor?: keyof typeof theme.colors;
   backgroundColor?: keyof typeof theme.colors;
-  radius?: StandardRadius;
   children?: any;
   childrenAlignment?: TextAlignmentWithinContainer;
 }
@@ -47,8 +46,13 @@ const LineItem = ({
   rightComponent,
   accordionContent,
   bottomBorder,
+  bottomPadding,
   topBorder,
   radius,
+  borderTopLeftRadius,
+  borderTopRightRadius,
+  borderBottomLeftRadius,
+  borderBottomRightRadius,
   children,
   childrenAlignment = "left",
   ...rest
@@ -67,8 +71,11 @@ const LineItem = ({
     <Pressable
       accessibilityLabel={accessibilityLabel}
       justifyContent="center"
-      flexDirection="column"
       marginVertical={simpleRow ? undefined : "s"}
+      borderTopLeftRadius={mapRadius(borderTopLeftRadius)}
+      borderTopRightRadius={mapRadius(borderTopRightRadius)}
+      borderBottomLeftRadius={mapRadius(borderBottomLeftRadius)}
+      borderBottomRightRadius={mapRadius(borderBottomRightRadius)}
       borderRadius={mapRadius(radius)}
       sideEffect={
         accordion ? () => setAccordionIsOpen((prev) => !prev) : undefined
@@ -80,18 +87,18 @@ const LineItem = ({
       )}
       <Box
         paddingVertical="xs"
-        paddingBottom={bottomBorder ? "s" : undefined}
+        paddingBottom={bottomPadding}
         marginHorizontal={simpleRow ? undefined : "m"}
         alignItems="center"
         justifyContent="space-between"
         flexDirection="row"
-        flex={1}
+        flexShrink={0}
       >
         <Box
           paddingVertical={simpleRow ? undefined : topBorder ? "micro" : "s"}
-          flex={1}
           alignItems="center"
           flexDirection="row"
+          flex={1}
         >
           {leftComponent}
           <Box
@@ -124,24 +131,18 @@ const LineItem = ({
 };
 
 LineItem.Heading = ({
-  accessibilityLabel,
   color = "darkGrey",
   weight = "light",
   children,
 }: LineItemHeadingProps) => {
   return (
-    <Text
-      preset={weight === "light" ? "label-light" : "label"}
-      color={color}
-      accessibilityLabel={accessibilityLabel}
-    >
+    <Text preset={weight === "light" ? "label-light" : "label"} color={color}>
       {children}
     </Text>
   );
 };
 
 LineItem.Subheading = ({
-  accessibilityLabel,
   weight = "light",
   color = "darkGrey",
   children,
@@ -150,7 +151,6 @@ LineItem.Subheading = ({
     <Text
       preset={weight === "light" ? "sublabel-light" : "sublabel"}
       color={color}
-      accessibilityLabel={accessibilityLabel}
     >
       {children}
     </Text>

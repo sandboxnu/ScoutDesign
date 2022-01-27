@@ -1,3 +1,4 @@
+import { StyleSheet } from "react-native";
 import theme, { Theme } from "../../../../theme";
 import {
   Pressable,
@@ -33,17 +34,19 @@ const Icon = ({
         accessibilityLabel={icon.name}
         borderRadius={mapRadius(radius, size)}
         overflow="hidden"
+        borderWidth={backgroundColor ? 0.25 : undefined}
+        borderColor={backgroundColor ? "mediumGrey" : undefined}
         {...rest}
       >
         <icon.component
-          style={
+          style={[
             backgroundColor
               ? {
                   padding: 6,
                   backgroundColor: theme.colors[backgroundColor],
                 }
-              : undefined
-          }
+              : undefined,
+          ]}
           name={icon.name}
           size={theme.assetSizes[size]}
           color={color ? theme.colors?.[color] : undefined}
@@ -53,5 +56,4 @@ const Icon = ({
   }
 };
 
-Icon.Payload = IconPayload;
 export default Icon;

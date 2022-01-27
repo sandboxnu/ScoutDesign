@@ -67,10 +67,9 @@ function Card({
           leftComponent={headerLeft}
           childrenAlignment={titleAlignment}
           bottomBorder={borderBelowHeader}
+          bottomPadding={borderBelowHeader ? "s" : undefined}
         >
-          <LineItem.Subheading accessibilityLabel="card-title">
-            {title}
-          </LineItem.Subheading>
+          <LineItem.Subheading>{title}</LineItem.Subheading>
         </LineItem>
         <Box paddingVertical="micro">
           {Children.map(children, (child) => {

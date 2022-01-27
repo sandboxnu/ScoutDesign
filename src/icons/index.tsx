@@ -57,6 +57,11 @@ export const dot = new IconPayload({
   library: Octicons,
 });
 
+export const forwardArrow = new IconPayload({
+  name: "arrow-forward",
+  library: Ionicons,
+});
+
 export const gearThin = new IconPayload({
   name: "gear",
   library: EvilIcons,

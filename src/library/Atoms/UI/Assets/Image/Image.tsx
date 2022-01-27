@@ -45,7 +45,7 @@ const Image = ({
 }: Props) => {
   const foreground = placement === "foreground";
   const gradientEndColor =
-    overlay === "light" ? "rgba(255, 255, 255, 0.35)" : "rgba(25, 23, 16, 0.9)";
+    overlay === "light" ? "rgba(255, 255, 255, 1)" : "rgba(25, 23, 16, 0.9)";
 
   return (
     <Pressable

@@ -1,7 +1,7 @@
 import Box from "../Box/Box";
 
 type Corner = "top-right" | "top-left" | "bottom-right" | "bottom-left";
-type DistanceFromCorner = "l" | "s";
+type DistanceFromCorner = "l" | "s" | "edge";
 
 type Position = {
   top?: number;
@@ -13,6 +13,7 @@ type Position = {
 type PositionFromDistance = {
   l?: Position;
   s?: Position;
+  edge?: Position;
 };
 
 type PositionObj = {
@@ -37,6 +38,10 @@ const positions: PositionObj = {
       top: 5,
       right: 5,
     },
+    edge: {
+      top: -7,
+      right: -7,
+    },
   },
   "top-left": {
     l: {
@@ -47,6 +52,10 @@ const positions: PositionObj = {
       top: 5,
       left: 5,
     },
+    edge: {
+      top: -7,
+      left: -7,
+    },
   },
   "bottom-right": {
     l: {
@@ -54,8 +63,12 @@ const positions: PositionObj = {
       right: 25,
     },
     s: {
-      bottom: 5,
-      right: 5,
+      bottom: 10,
+      right: 14,
+    },
+    edge: {
+      bottom: -7,
+      right: -7,
     },
   },
   "bottom-left": {
@@ -64,8 +77,12 @@ const positions: PositionObj = {
       left: 25,
     },
     s: {
-      bottom: 5,
-      left: 5,
+      bottom: 10,
+      left: 14,
+    },
+    edge: {
+      bottom: -7,
+      left: -7,
     },
   },
 };

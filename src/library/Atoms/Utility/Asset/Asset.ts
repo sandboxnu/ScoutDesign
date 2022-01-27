@@ -1,4 +1,5 @@
 import theme from "../../../theme";
+import { Radius } from "../types";
 
 export type Dimensions = {
   width?: number;
@@ -6,18 +7,6 @@ export type Dimensions = {
 };
 
 export type SizePresets = "micro" | "xs" | "s" | "m" | "l" | "xl";
-
-export type StandardRadius = "xs" | "s" | "m" | "l" | "xl";
-export type ExtendedRadius =
-  | "default"
-  | "circle"
-  | "xs"
-  | "s"
-  | "m"
-  | "l"
-  | "xl";
-
-export type Radius = StandardRadius | ExtendedRadius;
 
 export const mapRadius = (
   radius?: Radius,

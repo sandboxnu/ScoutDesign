@@ -17,6 +17,7 @@ import {
   PositionProps,
   BorderProps,
   BackgroundColorProps,
+  ShadowProps,
 } from "@shopify/restyle";
 
 export interface PressableProps {
@@ -32,6 +33,7 @@ type Props = SpacingProps<Theme> &
   LayoutProps<Theme> &
   PositionProps<Theme> &
   BorderProps<Theme> &
+  ShadowProps<Theme> &
   BackgroundColorProps<Theme> &
   PressableProps & {
     accessibilityLabel: string;

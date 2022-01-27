@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, Dimensions } from "react-native";
+import { ScrollView, Dimensions, Modal as RNModal } from "react-native";
 import Constants from "expo-constants";
 
 import {
@@ -13,6 +13,7 @@ import {
   Image,
   Avatar,
   Card,
+  Modal,
 } from "../library";
 
 import {
@@ -30,32 +31,26 @@ import theme from "../library/theme";
 // There is currently no way to move an image around under the clipping mask. It's centered and that's the only option. If anyone knows how to move the image so I could pass "bottom center" and have the image anchored at the bottom and center that would be great, hmu
 
 const DesignSystem = () => {
+  const [editing, setEditing] = React.useState(false);
   return (
     <ScrollView
-      style={{ flex: 1, backgroundColor: theme.colors.lightMintGrey }}
+      style={{ flex: 1, backgroundColor: theme.colors.white }}
       contentContainerStyle={{
         paddingTop: Constants.statusBarHeight,
         paddingHorizontal: 20,
         paddingBottom: 180,
       }}
     >
-      <Text
-        accessibilityLabel="ScoutDesign-heading-1"
-        color="white"
-        preset="h1"
-      >
+      <Text accessibilityLabel="ScoutDesign-heading-1" preset="h1">
         Heading 1
       </Text>
-      <Text
-        accessibilityLabel="ScoutDesign-heading-2"
-        color="white"
-        preset="h2"
-      >
+      <Text accessibilityLabel="ScoutDesign-heading-2" preset="h2">
         Heading 2
       </Text>
       <Image
         accessibilityLabel="user-profile"
         placement="background"
+        overlay="light"
         size={{
           height: Dimensions.get("window").height * 0.135,
         }}
@@ -87,8 +82,23 @@ const DesignSystem = () => {
         accessibilityLabel="solid-submit"
         text="Submit"
         fullWidth
-        onPress={() => {}}
+        onPress={() => {
+          setEditing(true);
+        }}
       />
+      <RNModal animationType="fade" transparent={true} visible={editing}>
+        <Modal title="Title" next={() => {}} escape={() => setEditing(false)}>
+          <Text accessibilityLabel="home-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            maximus diam et sagittis fringilla. Ut volutpat purus id efficitur
+            dictum. Mauris metus sem, accumsan a sollicitudin sit amet, rutrum
+            quis libero. Aenean ultricies tincidunt auctor. Pellentesque
+            vehicula consectetur orci, tincidunt cursus nunc tempor ultricies.
+            Cras pulvinar porta sagittis. Mauris semper nunc eget nisi lobortis,
+            eu scelerisque ligula lobortis.
+          </Text>
+        </Modal>
+      </RNModal>
       <Button
         accessibilityLabel="gradient-full-width"
         text="Confirm"
@@ -190,9 +200,7 @@ const DesignSystem = () => {
         }
         radius="m"
       >
-        <LineItem.Heading accessibilityLabel="troop-name">
-          Troop 318
-        </LineItem.Heading>
+        <LineItem.Heading>Troop 318</LineItem.Heading>
       </LineItem>
       <Card
         accessibilityLabel="solid card"
@@ -219,7 +227,6 @@ const DesignSystem = () => {
           source={{
             uri: "https://picsum.photos/1000",
           }}
-          overlay="light"
         />
         <Card.Description
           sameLine
