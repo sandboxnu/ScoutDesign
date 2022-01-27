@@ -101,7 +101,7 @@ const theme = createTheme({
     s: 4,
     m: 7,
     l: 14,
-    xl: 18,
+    xl: 25,
   },
   assetSizes: {
     micro: 9,
@@ -120,13 +120,13 @@ const theme = createTheme({
       fontSize: 36,
       lineHeight: 45,
       fontFamily: "metropolis-black",
-      fontWeight: "bold",
+      fontWeight: "900",
     },
     h2: {
-      fontSize: 28,
-      lineHeight: 36,
+      fontSize: 30,
+      lineHeight: 34,
       fontFamily: "metropolis-bold",
-      fontWeight: "bold",
+      fontWeight: "800",
     },
     subheading: {
       fontSize: 19.5,

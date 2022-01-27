@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import theme, { Theme } from "../../../../theme";
 import {
   Pressable,

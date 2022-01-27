@@ -12,9 +12,11 @@ export type ExtendedRadius =
 export type Radius = StandardRadius | ExtendedRadius;
 
 export interface RadiusProps {
-  radius?: StandardRadius;
-  borderTopRightRadius?: StandardRadius;
-  borderTopLeftRadius?: StandardRadius;
-  borderBottomRightRadius?: StandardRadius;
-  borderBottomLeftRadius?: StandardRadius;
+  radius?: Radius;
+  topRightRadius?: StandardRadius;
+  topLeftRadius?: StandardRadius;
+  bottomRightRadius?: StandardRadius;
+  bottomLeftRadius?: StandardRadius;
 }
+
+export type Modify<T, R> = Omit<T, keyof R> & R;

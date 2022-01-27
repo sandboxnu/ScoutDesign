@@ -14,6 +14,7 @@ import {
   Avatar,
   Card,
   Modal,
+  ComponentStack,
 } from "../library";
 
 import {
@@ -87,7 +88,11 @@ const DesignSystem = () => {
         }}
       />
       <RNModal animationType="fade" transparent={true} visible={editing}>
-        <Modal title="Title" next={() => {}} escape={() => setEditing(false)}>
+        <Modal
+          title="This is title."
+          next={() => {}}
+          escape={() => setEditing(false)}
+        >
           <Text accessibilityLabel="home-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             maximus diam et sagittis fringilla. Ut volutpat purus id efficitur
@@ -173,20 +178,18 @@ const DesignSystem = () => {
           <Icon icon={gearThin} color="darkGrey" size="l" onPress={() => {}} />
         }
       >
-        <LineItem.Heading accessibilityLabel="user-name">
-          Kaleb Davenport
-        </LineItem.Heading>
-        <LineItem.Subheading accessibilityLabel="troop-number">
-          Troop 319
-        </LineItem.Subheading>
+        <LineItem.Heading>Kaleb Davenport</LineItem.Heading>
+        <LineItem.Subheading>Troop 319</LineItem.Subheading>
       </LineItem>
+      <ComponentStack />
       <LineItem
         accessibilityLabel="basic-line-item"
         type="button"
         onPress={() => {}}
         leftComponent={<Icon icon={searchThin} color="darkGrey" size="l" />}
+        // border="mediumGrey"
       >
-        <LineItem.Subheading accessibilityLabel="troop-319">
+        <LineItem.Subheading>
           Celeste Slater 606-3727 Ullamcorper. Street Roseville NH 11523 (786)
           713-8616
         </LineItem.Subheading>
@@ -194,7 +197,7 @@ const DesignSystem = () => {
       <LineItem
         accessibilityLabel="basic-line-item"
         type="static"
-        backgroundColor="white"
+        backgroundColor="lightMintGrey"
         leftComponent={
           <Icon radius="circle" icon={compass} color="darkGrey" size="m" />
         }

@@ -5,6 +5,8 @@ import {
 } from "react-native";
 import { Theme } from "../../../theme";
 import Box from "../Box/Box";
+import { RadiusProps } from "../types";
+import { mapRadius } from "../Asset/Asset";
 import {
   useRestyle,
   spacing,
@@ -20,7 +22,7 @@ import {
   ShadowProps,
 } from "@shopify/restyle";
 
-export interface PressableProps {
+export interface PressableProps extends RadiusProps {
   disabled?: boolean;
   disabledStyle?: any;
   onPress?: (nativeEvent: GestureResponderEvent) => void;
@@ -28,24 +30,32 @@ export interface PressableProps {
   sideEffect?: () => void;
 }
 
-const restyleFunctions = [spacing, layout, border, position, backgroundColor];
+const restyleFunctions = [spacing, layout, position, border, backgroundColor];
+
 type Props = SpacingProps<Theme> &
   LayoutProps<Theme> &
   PositionProps<Theme> &
-  BorderProps<Theme> &
   ShadowProps<Theme> &
   BackgroundColorProps<Theme> &
+  BorderProps<Theme> &
   PressableProps & {
     accessibilityLabel: string;
+    key?: string;
     children: any;
   };
 
-const Pressable = ({
+const PressableBase = ({
   accessibilityLabel,
+  key,
   disabled = false,
   onPress,
   onLongPress,
   sideEffect,
+  topLeftRadius,
+  topRightRadius,
+  bottomRightRadius,
+  bottomLeftRadius,
+  radius,
   children,
   ...rest
 }: Props) => {
@@ -53,7 +63,12 @@ const Pressable = ({
 
   if (!onPress && !onLongPress && !sideEffect) {
     return (
-      <Box testID={accessibilityLabel} nativeID={accessibilityLabel} {...rest}>
+      <Box
+        {...rest}
+        key={key}
+        testID={accessibilityLabel}
+        nativeID={accessibilityLabel}
+      >
         {children}
       </Box>
     );
@@ -61,6 +76,7 @@ const Pressable = ({
 
   return (
     <RNPressable
+      key={key}
       onPress={sideEffect || onPress}
       onLongPress={onLongPress}
       hitSlop={8}
@@ -74,6 +90,21 @@ const Pressable = ({
     >
       {({ pressed }) => <View {...props}>{children}</View>}
     </RNPressable>
+  );
+};
+
+const Pressable = (props: Props) => {
+  return (
+    <PressableBase
+      borderTopLeftRadius={mapRadius(props?.topLeftRadius)}
+      borderTopRightRadius={mapRadius(props?.topRightRadius)}
+      borderBottomLeftRadius={mapRadius(props?.bottomLeftRadius)}
+      borderBottomRightRadius={mapRadius(props?.bottomRightRadius)}
+      borderRadius={mapRadius(props?.radius)}
+      {...props}
+    >
+      {props.children}
+    </PressableBase>
   );
 };
 

@@ -45,7 +45,7 @@ function Card({
         marginVertical="s"
         paddingHorizontal="m"
         paddingVertical="s"
-        borderRadius={mapRadius("l")}
+        radius="l"
         justifyContent="center"
         accessibilityLabel={accessibilityLabel}
         borderColor="slateGrey"

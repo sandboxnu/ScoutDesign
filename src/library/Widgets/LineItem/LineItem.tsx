@@ -21,9 +21,10 @@ type LineItemHeadingProps = {
   children: React.ReactNode;
 };
 
-interface Props extends PressableProps, RadiusProps {
+interface Props extends PressableProps {
   accessibilityLabel: string;
   type: "button" | "static" | "simpleRow" | "accordion" | "formField";
+  border?: keyof typeof theme.colors;
   topBorder?: boolean;
   bottomBorder?: boolean;
   bottomPadding?: keyof typeof theme.spacing;
@@ -45,14 +46,10 @@ const LineItem = ({
   leftComponent,
   rightComponent,
   accordionContent,
-  bottomBorder,
   bottomPadding,
+  border,
+  bottomBorder,
   topBorder,
-  radius,
-  borderTopLeftRadius,
-  borderTopRightRadius,
-  borderBottomLeftRadius,
-  borderBottomRightRadius,
   children,
   childrenAlignment = "left",
   ...rest
@@ -70,13 +67,11 @@ const LineItem = ({
   return (
     <Pressable
       accessibilityLabel={accessibilityLabel}
+      topRightRadius="s"
+      topLeftRadius="s"
       justifyContent="center"
-      marginVertical={simpleRow ? undefined : "s"}
-      borderTopLeftRadius={mapRadius(borderTopLeftRadius)}
-      borderTopRightRadius={mapRadius(borderTopRightRadius)}
-      borderBottomLeftRadius={mapRadius(borderBottomLeftRadius)}
-      borderBottomRightRadius={mapRadius(borderBottomRightRadius)}
-      borderRadius={mapRadius(radius)}
+      borderWidth={border ? 0.25 : undefined}
+      borderColor={border}
       sideEffect={
         accordion ? () => setAccordionIsOpen((prev) => !prev) : undefined
       }

@@ -34,18 +34,18 @@ const Modal = ({ escape, next, title, children }: ModalProps) => {
           distanceFromCorner="edge"
         />
         <LineItem
-          accessibilityLabel="modal-heading-container"
+          accessibilityLabel="modal-header"
           bottomBorder={true}
           backgroundColor="brandAction"
           type="simpleRow"
-          borderTopLeftRadius="m"
-          borderTopRightRadius="m"
+          topLeftRadius="m"
+          topRightRadius="m"
         >
           <Text
-            accessibilityLabel="modal-heading"
             color="white"
-            padding="m"
-            preset="h2"
+            paddingHorizontal="s"
+            paddingVertical="m"
+            preset="h1"
           >
             {title}
           </Text>
