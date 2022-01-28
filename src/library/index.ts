@@ -14,3 +14,6 @@ export { default as LineItem } from "./Widgets/LineItem/LineItem";
 export { default as Card } from "./Widgets/Card/Card";
 export { default as Modal } from "./Widgets/Modal/Modal";
 export { default as Stack } from "./Widgets/Stack/Stack";
+
+// Form Fields
+export { default as TextInput } from "./Atoms/FormFields/TextInput/TextInput";

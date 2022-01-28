@@ -15,6 +15,7 @@ import {
   Card,
   Modal,
   Stack,
+  TextInput,
 } from "../library";
 
 import {
@@ -185,6 +186,7 @@ const DesignSystem = () => {
         type="Pressable"
         accessibilityLabel="test-stack"
         radius="l"
+        borderColor="brandAction"
         everyItemProps={{
           onPress: () => console.log("Hi"),
           textColor: "brandActionDark",
@@ -218,6 +220,7 @@ const DesignSystem = () => {
           );
         }}
       />
+      <TextInput disabled value="50" onInputChange={() => {}} />
       <LineItem
         accessibilityLabel="basic-line-item"
         type="button"
