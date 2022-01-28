@@ -14,7 +14,7 @@ import {
   Avatar,
   Card,
   Modal,
-  ComponentStack,
+  Stack,
 } from "../library";
 
 import {
@@ -181,13 +181,48 @@ const DesignSystem = () => {
         <LineItem.Heading>Kaleb Davenport</LineItem.Heading>
         <LineItem.Subheading>Troop 319</LineItem.Subheading>
       </LineItem>
-      <ComponentStack />
+      <Stack
+        type="Pressable"
+        accessibilityLabel="test-stack"
+        radius="l"
+        everyItemProps={{
+          onPress: () => console.log("Hi"),
+          textColor: "brandActionDark",
+        }}
+        items={[
+          {
+            id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+            text: "First Item",
+          },
+          {
+            id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+            text: "Second Item",
+          },
+          {
+            id: "58694a0f-3da1-471f-bd96-145571e29d72",
+            text: "Third Item",
+          },
+        ]}
+        RenderItem={({ item, textColor, onPress, ...rest }) => {
+          return (
+            <LineItem
+              accessibilityLabel={item?.text}
+              type="static"
+              onPress={item?.onPress || onPress}
+              {...rest}
+            >
+              <LineItem.Heading color={textColor} weight="medium">
+                {item?.text}
+              </LineItem.Heading>
+            </LineItem>
+          );
+        }}
+      />
       <LineItem
         accessibilityLabel="basic-line-item"
         type="button"
         onPress={() => {}}
         leftComponent={<Icon icon={searchThin} color="darkGrey" size="l" />}
-        // border="mediumGrey"
       >
         <LineItem.Subheading>
           Celeste Slater 606-3727 Ullamcorper. Street Roseville NH 11523 (786)
@@ -195,13 +230,12 @@ const DesignSystem = () => {
         </LineItem.Subheading>
       </LineItem>
       <LineItem
-        accessibilityLabel="basic-line-item"
+        accessibilityLabel="large-static-line"
         type="static"
         backgroundColor="lightMintGrey"
         leftComponent={
           <Icon radius="circle" icon={compass} color="darkGrey" size="m" />
         }
-        radius="m"
       >
         <LineItem.Heading>Troop 318</LineItem.Heading>
       </LineItem>

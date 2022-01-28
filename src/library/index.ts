@@ -13,4 +13,4 @@ export { default as Avatar } from "./Atoms/UI/Assets/Avatar/Avatar";
 export { default as LineItem } from "./Widgets/LineItem/LineItem";
 export { default as Card } from "./Widgets/Card/Card";
 export { default as Modal } from "./Widgets/Modal/Modal";
-export { default as ComponentStack } from "./Widgets/ComponentStack/ComponentStack";
+export { default as Stack } from "./Widgets/Stack/Stack";

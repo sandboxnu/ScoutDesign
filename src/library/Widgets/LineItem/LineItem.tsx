@@ -2,11 +2,12 @@
 import React, { useState } from "react";
 
 import theme from "../../theme";
-import { Box, mapRadius, RadiusProps } from "../../Atoms/utility";
+import { Box } from "../../Atoms/utility";
 import Text, { TextAlignmentWithinContainer } from "../../Atoms/UI/Text/Text";
 import Icon from "../../Atoms/UI/Assets/Icon/Icon";
 import { upCaret, downCaret } from "../../../icons";
 import { Pressable, PressableProps } from "../../Atoms/utility";
+import { StackableProps } from "../Stack/Stack";
 
 const LineItemToggleIcon = ({ open }: { open: boolean }) => {
   if (open) {
@@ -21,17 +22,16 @@ type LineItemHeadingProps = {
   children: React.ReactNode;
 };
 
-interface Props extends PressableProps {
+interface Props extends PressableProps, StackableProps {
   accessibilityLabel: string;
   type: "button" | "static" | "simpleRow" | "accordion" | "formField";
-  border?: keyof typeof theme.colors;
+  borderColor?: keyof typeof theme.colors;
   topBorder?: boolean;
   bottomBorder?: boolean;
   bottomPadding?: keyof typeof theme.spacing;
   leftComponent?: React.ReactNode;
   rightComponent?: React.ReactNode;
   accordionContent?: React.ReactNode;
-  textColor?: keyof typeof theme.colors;
   backgroundColor?: keyof typeof theme.colors;
   children?: any;
   childrenAlignment?: TextAlignmentWithinContainer;
@@ -47,9 +47,12 @@ const LineItem = ({
   rightComponent,
   accordionContent,
   bottomPadding,
-  border,
+  borderColor,
   bottomBorder,
   topBorder,
+  isStackBottom,
+  isStackTop,
+  stackRadius,
   children,
   childrenAlignment = "left",
   ...rest
@@ -67,11 +70,13 @@ const LineItem = ({
   return (
     <Pressable
       accessibilityLabel={accessibilityLabel}
-      topRightRadius="s"
-      topLeftRadius="s"
+      topRightRadius={isStackTop ? stackRadius : undefined}
+      topLeftRadius={isStackTop ? stackRadius : undefined}
+      bottomRightRadius={isStackBottom ? stackRadius : undefined}
+      bottomLeftRadius={isStackBottom ? stackRadius : undefined}
       justifyContent="center"
-      borderWidth={border ? 0.25 : undefined}
-      borderColor={border}
+      borderWidth={borderColor ? 0.25 : undefined}
+      borderColor={borderColor}
       sideEffect={
         accordion ? () => setAccordionIsOpen((prev) => !prev) : undefined
       }

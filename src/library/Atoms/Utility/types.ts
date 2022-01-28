@@ -1,4 +1,4 @@
-export type StandardRadius = "xs" | "s" | "m" | "l" | "xl";
+export type StandardRadius = "micro" | "xs" | "s" | "m" | "l" | "xl";
 
 export type ExtendedRadius =
   | "default"
