@@ -10,7 +10,7 @@ export type SizePresets = "micro" | "xs" | "s" | "m" | "l" | "xl";
 
 export const mapRadius = (
   radius?: Radius,
-  size?: SizePresets | Dimensions
+  size?: SizePresets | Dimensions | "fill"
 ): number | undefined => {
   if (!radius) {
     return undefined;
@@ -18,7 +18,10 @@ export const mapRadius = (
 
   if (size) {
     // If size is not a Dimension
-    if (typeof size === "string") {
+    if (size === "fill" && radius !== "circle" && radius !== "default") {
+      return theme.radii[radius];
+    }
+    if (typeof size === "string" && size !== "fill") {
       if (radius === "default") {
         return theme.radii[size];
       } else if (radius === "circle") {
@@ -27,10 +30,12 @@ export const mapRadius = (
         return theme.radii[radius];
       }
     }
-    // If size is type Dimensions
+    // If size is type Dimensions or fill
     else {
       if (radius === "circle") {
-        if (size.height === size.width) {
+        if (size === "fill") {
+          return theme.radii.xl;
+        } else if (size.height === size.width) {
           return size.height / 2;
         } else {
           return theme.radii.xl;
@@ -54,6 +59,6 @@ export const mapRadius = (
 };
 
 export interface AssetProps {
-  size: SizePresets | Dimensions;
+  size: SizePresets | Dimensions | "fill";
   radius?: Radius;
 }

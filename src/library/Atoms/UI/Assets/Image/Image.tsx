@@ -19,7 +19,7 @@ import {
 
 import Text from "../../Text/Text";
 
-interface ImageProps extends AssetProps, PressableProps {
+export interface ImageProps extends AssetProps, PressableProps {
   accessibilityLabel: string;
   placement?: "background" | "foreground";
   source: ImageSourcePropType;
@@ -58,8 +58,20 @@ const Image = ({
       {...rest}
     >
       <Box
-        width={typeof size === "string" ? theme.assetSizes[size] : size.width}
-        height={typeof size === "string" ? theme.assetSizes[size] : size.height}
+        width={
+          size === "fill"
+            ? "100%"
+            : typeof size === "string"
+            ? theme.assetSizes[size]
+            : size.width
+        }
+        height={
+          size === "fill"
+            ? "100%"
+            : typeof size === "string"
+            ? theme.assetSizes[size]
+            : size.height
+        }
         borderRadius={mapRadius(radius, size)}
         overflow="hidden"
       >
