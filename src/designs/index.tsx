@@ -186,41 +186,45 @@ const DesignSystem = () => {
         type="Pressable"
         accessibilityLabel="test-stack"
         radius="l"
-        borderColor="brandAction"
+        borderColor="mediumGrey"
         everyItemProps={{
-          onPress: () => console.log("Hi"),
-          textColor: "brandActionDark",
+          onValueChange: (value) => {},
         }}
         items={[
           {
             id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-            text: "First Item",
+            text: "First and Last Name",
           },
           {
             id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-            text: "Second Item",
+            text: "Email Address",
           },
           {
             id: "58694a0f-3da1-471f-bd96-145571e29d72",
-            text: "Third Item",
+            text: "Password",
+          },
+          {
+            id: "58694a0f-3da1-471f-bd96-145571e29d72",
+            text: "Confirm Password",
           },
         ]}
-        RenderItem={({ item, textColor, onPress, ...rest }) => {
+        RenderItem={({ item, onValueChange, ...rest }) => {
           return (
-            <LineItem
-              accessibilityLabel={item?.text}
-              type="static"
-              onPress={item?.onPress || onPress}
+            <TextInput
+              key={item.id}
+              placeholder={item.text}
+              valid={item?.valid}
+              disabled={item?.disabled}
+              error={item?.error}
+              type="basic"
+              noStyles
+              onValueChange={onValueChange}
               {...rest}
-            >
-              <LineItem.Heading color={textColor} weight="medium">
-                {item?.text}
-              </LineItem.Heading>
-            </LineItem>
+            />
           );
         }}
       />
-      <TextInput disabled value="50" onInputChange={() => {}} />
+
       <LineItem
         accessibilityLabel="basic-line-item"
         type="button"

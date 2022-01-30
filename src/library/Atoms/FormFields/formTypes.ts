@@ -1,10 +1,10 @@
-import { TextInputProps } from "react-native";
-
-interface formFieldProps {
-  placeholder?: string;
-  value?: string | number;
-  onInputChange: (value: string | number) => void;
+export interface FormFieldStates {
   disabled?: boolean;
+  valid?: boolean;
+  error?: string;
 }
 
-export type TextFieldProps = TextInputProps & formFieldProps;
+export interface FormFieldProps extends FormFieldStates {
+  value?: string | number;
+  onValueChange: (value: string | number) => void;
+}

@@ -1,6 +1,10 @@
 import Pressable from "../../Atoms/utility/Pressable/Pressable";
 import Box from "../../Atoms/utility/Box/Box";
 import { StandardRadius } from "../../Atoms/utility/types";
+import {
+  FormFieldProps,
+  FormFieldStates,
+} from "../../Atoms/FormFields/formTypes";
 
 import theme from "../../theme";
 import { IconPayload } from "../../../icons";
@@ -11,7 +15,7 @@ export interface StackableProps {
   isStackBottom?: boolean;
 }
 
-interface StackDataItem {
+interface StackDataItem extends FormFieldStates {
   id: string;
   text: string;
   icon?: IconPayload;
@@ -19,7 +23,7 @@ interface StackDataItem {
   updateText?: () => void;
 }
 
-interface EveryStackItemProps {
+interface EveryStackItemProps extends FormFieldProps {
   textColor?: keyof typeof theme.colors;
   leftComponent?: React.ReactNode;
   placeholderColor?: keyof typeof theme.colors;
@@ -45,7 +49,6 @@ const Stack = ({
   RenderItem,
   items,
   everyItemProps,
-  type,
 }: StackProps) => {
   return (
     <Pressable
@@ -59,15 +62,7 @@ const Stack = ({
         const lastItem = index === items.length - 1;
         return (
           <>
-            <RenderItem
-              backgroundColor={backgroundColor}
-              stackRadius={radius === "none" ? undefined : radius}
-              isStackTop={firstItem}
-              isStackBottom={lastItem}
-              item={item}
-              {...everyItemProps}
-            />
-            {!lastItem && (
+            {!firstItem && !item.disabled && !item?.error && (
               <Box backgroundColor={backgroundColor} height={1}>
                 <Box
                   flex={1}
@@ -76,6 +71,14 @@ const Stack = ({
                 />
               </Box>
             )}
+            <RenderItem
+              backgroundColor={backgroundColor}
+              stackRadius={radius === "none" ? undefined : radius}
+              isStackTop={firstItem}
+              isStackBottom={lastItem}
+              item={item}
+              {...everyItemProps}
+            />
           </>
         );
       })}

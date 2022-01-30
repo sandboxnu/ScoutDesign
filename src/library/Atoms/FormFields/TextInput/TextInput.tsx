@@ -1,69 +1,105 @@
-import React, { useState, useEffect } from "react";
+import { TextInputProps as RNTextInputProps } from "react-native";
+import React from "react";
 import { StyleSheet } from "react-native";
+import { Color } from "../../utility";
 import TextInput from "../../utility/TextInput/TextInput";
-import { TextFieldProps } from "../formTypes";
-// import Colors from "../../../constants/Colors";
-// import Fonts from "../../../constants/Fonts";
+import { FormFieldProps } from "../formTypes";
+import { StackableProps } from "../../../Widgets/Stack/Stack";
+
+interface TextInputProps extends FormFieldProps, StackableProps {
+  placeholder?: string;
+  noStyles?: boolean;
+  type: "basic" | "primary";
+}
+
+type Props = TextInputProps & RNTextInputProps;
 
 const Input = ({
   placeholder,
-  onInputChange,
+  onValueChange,
+  value,
   disabled,
+  valid,
+  error,
+  noStyles = false,
+  type,
+  isStackBottom,
+  isStackTop,
+  stackRadius,
   ...props
-}: TextFieldProps) => {
-  const [value, setValue] = useState("");
+}: Props) => {
+  const backgroundColorFromProps = (): Color | undefined => {
+    if (disabled) {
+      return "lightMintGrey";
+    } else if (error) {
+      return "lightRedGrey";
+    } else if (noStyles) {
+      return undefined;
+    } else {
+      return "white";
+    }
+  };
 
-  useEffect(() => {
-    onInputChange(value);
-  }, [value]);
+  if (type === "primary") {
+    return (
+      <TextInput
+        {...props}
+        borderRadius={7}
+        borderBottomWidth={4}
+        topRightRadius={isStackTop ? stackRadius : undefined}
+        topLeftRadius={isStackTop ? stackRadius : undefined}
+        bottomRightRadius={isStackBottom ? stackRadius : undefined}
+        bottomLeftRadius={isStackBottom ? stackRadius : undefined}
+        value={value}
+        backgroundColor={backgroundColorFromProps()}
+        borderWidth={0.5}
+        borderColor={disabled ? "mediumGrey" : error ? "danger" : "mintGrey"}
+        paddingVertical="m"
+        paddingHorizontal="l"
+        borderBottomColor={
+          disabled ? "mediumGrey" : error ? "danger" : "brandAction"
+        }
+        borderBottomLeftRadius={0}
+        borderBottomRightRadius={0}
+        onChangeText={onValueChange}
+        placeholder={placeholder}
+        placeholderTextColor="#90A7A5"
+        editable={!disabled}
+        style={styles.input}
+      />
+    );
+  }
 
-  return (
-    <TextInput
-      value={value}
-      backgroundColor="white"
-      borderWidth={2}
-      borderColor="mintGrey"
-      paddingVertical="m"
-      paddingHorizontal="l"
-      borderRadius={7}
-      onChangeText={setValue}
-      placeholder={placeholder}
-      {...props}
-      editable={!disabled}
-      placeholderTextColor="#382B14"
-      style={!disabled ? styles.input : styles.disabledInput}
-    />
-  );
+  if (type === "basic") {
+    return (
+      <TextInput
+        {...props}
+        borderWidth={disabled || error ? 2 : noStyles ? undefined : 0.5}
+        borderColor={disabled ? "mediumGrey" : error ? "danger" : "mintGrey"}
+        borderRadius={noStyles ? undefined : 7}
+        topRightRadius={isStackTop ? stackRadius : undefined}
+        topLeftRadius={isStackTop ? stackRadius : undefined}
+        bottomRightRadius={isStackBottom ? stackRadius : undefined}
+        bottomLeftRadius={isStackBottom ? stackRadius : undefined}
+        value={value}
+        backgroundColor={backgroundColorFromProps()}
+        paddingVertical="m"
+        paddingHorizontal="l"
+        onChangeText={onValueChange}
+        placeholder={placeholder}
+        placeholderTextColor="#90A7A5"
+        editable={!disabled}
+        style={styles.input}
+      />
+    );
+  }
+
+  return null;
 };
 
 const styles = StyleSheet.create({
   input: {
-    paddingHorizontal: 25,
-    paddingVertical: 18,
-    fontSize: 18,
-    borderTopRightRadius: 4,
-    borderTopLeftRadius: 4,
-    backgroundColor: "#fff",
-    borderBottomWidth: 2,
-    // borderColor: Colors.purple,
-
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 6,
-
-    elevation: 3,
-  },
-  disabledInput: {
-    padding: 8,
-    fontSize: 18,
-    borderRadius: 4,
-    // backgroundColor: Colors.tabIconDefault,
-    borderBottomWidth: 2,
-    // borderBottomColor: Colors.tabIconDefault,
+    fontSize: 17,
   },
 });
 

@@ -48,8 +48,8 @@ function Card({
         radius="l"
         justifyContent="center"
         accessibilityLabel={accessibilityLabel}
-        borderColor="slateGrey"
-        borderWidth={0.25}
+        borderColor="mediumGrey"
+        borderWidth={0.5}
         backgroundColor="white"
         {...rest}
       >

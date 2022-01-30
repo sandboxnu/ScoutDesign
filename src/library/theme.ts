@@ -27,10 +27,11 @@ const palette = {
 
   darkGrey: "#3D444D",
   slateGrey: "#738487",
+  morningGrey: "#9BB0AE",
   mediumGrey: "#B3CCC8",
   mintGrey: "#DBE6E1",
   lightMintGrey: "#F4F6F5",
-  lightRedGrey: "#F7F3F3",
+  lightRedGrey: "#F7F0F0",
 
   offWhite: "#F8FCFA",
   white: "#FFFFFF",
@@ -81,6 +82,7 @@ const theme = createTheme({
     mediumGrey: palette.mediumGrey,
     mintGrey: palette.mintGrey,
     lightMintGrey: palette.lightMintGrey,
+    lightRedGrey: palette.lightRedGrey,
 
     offWhite: palette.offWhite,
     white: palette.white,

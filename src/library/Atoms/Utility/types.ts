@@ -1,3 +1,5 @@
+import theme from "../../theme";
+
 export type StandardRadius = "micro" | "xs" | "s" | "m" | "l" | "xl";
 
 export type ExtendedRadius =
@@ -18,5 +20,8 @@ export interface RadiusProps {
   bottomRightRadius?: StandardRadius;
   bottomLeftRadius?: StandardRadius;
 }
+
+export type Color = keyof typeof theme.colors;
+export type Spacing = keyof typeof theme.spacing;
 
 export type Modify<T, R> = Omit<T, keyof R> & R;
