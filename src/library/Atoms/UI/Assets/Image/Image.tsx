@@ -12,14 +12,14 @@ import {
 import {
   Pressable,
   Box,
-  AssetProps,
+  SizeProps,
   PressableProps,
   mapRadius,
 } from "../../../utility";
 
 import Text from "../../Text/Text";
 
-export interface ImageProps extends AssetProps, PressableProps {
+export interface ImageProps extends SizeProps, PressableProps {
   accessibilityLabel: string;
   placement?: "background" | "foreground";
   source: ImageSourcePropType;

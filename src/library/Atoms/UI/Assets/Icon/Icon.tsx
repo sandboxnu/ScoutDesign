@@ -1,14 +1,14 @@
 import theme, { Theme } from "../../../../theme";
 import {
   Pressable,
-  AssetProps,
+  SizeProps,
   PressableProps,
   mapRadius,
 } from "../../../utility";
 import { SpacingProps } from "@shopify/restyle";
 import { IconPayload } from "../../../../../icons";
 
-interface IconProps extends AssetProps, PressableProps {
+interface IconProps extends SizeProps, PressableProps {
   icon: IconPayload;
   color: keyof typeof theme.colors;
   backgroundColor?: keyof typeof theme.colors;
