@@ -90,7 +90,13 @@ const Image = ({
             ]}
           >
             {title && (
-              <Text accessibilityLabel={title} color="white" preset="h2">
+              <Text
+                numberOfLines={1}
+                adjustsFontSizeToFit
+                accessibilityLabel={title}
+                color="white"
+                preset="h2"
+              >
                 {title}
               </Text>
             )}

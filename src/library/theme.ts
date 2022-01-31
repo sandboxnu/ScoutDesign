@@ -112,6 +112,7 @@ const theme = createTheme({
     m: 24,
     l: 30,
     xl: 140,
+    fill: "100%",
   },
   breakpoints: {
     phone: 0,

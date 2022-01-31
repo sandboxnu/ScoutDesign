@@ -41,7 +41,7 @@ const DesignSystem = () => {
         style={{ flex: 1, backgroundColor: theme.colors.white }}
         contentContainerStyle={{
           paddingTop: Constants.statusBarHeight,
-          paddingHorizontal: 20,
+          // paddingHorizontal: 20,
           paddingBottom: 180,
         }}
       >
@@ -311,45 +311,62 @@ const DesignSystem = () => {
             }
           />
         </Card>
+        <ImageTileGrid
+          rows={2}
+          padding="xs"
+          tiles={[
+            {
+              accessibilityLabel: "first-image",
+              source: {
+                uri: "https://picsum.photos/700",
+              },
+              onPress: () => {},
+              title: "Campout",
+            },
+            {
+              accessibilityLabel: "second-image",
+              source: {
+                uri: "https://picsum.photos/700",
+              },
+              onPress: () => {},
+              title: "Hike",
+            },
+            {
+              accessibilityLabel: "third-image",
+              source: {
+                uri: "https://picsum.photos/700",
+              },
+              onPress: () => {},
+              title: "Skiing",
+            },
+            {
+              accessibilityLabel: "fourth-image",
+              source: {
+                uri: "https://picsum.photos/700",
+              },
+              onPress: () => {},
+              title: "Meeting",
+            },
+            {
+              accessibilityLabel: "third-image",
+              source: {
+                uri: "https://picsum.photos/700",
+              },
+              onPress: () => {},
+              title: "Backpacking",
+            },
+            {
+              accessibilityLabel: "fourth-image",
+              source: {
+                uri: "https://picsum.photos/700",
+              },
+              onPress: () => {},
+              title: "Ice Climbing",
+            },
+          ]}
+          everyItemProps={{ radius: "m" }}
+        />
       </ScrollView>
-      <ImageTileGrid
-        rows={2}
-        padding="xs"
-        tiles={[
-          {
-            accessibilityLabel: "first-image",
-            source: {
-              uri: "https://picsum.photos/700",
-            },
-            onPress: () => {},
-            title: "Campout",
-          },
-          {
-            accessibilityLabel: "second-image",
-            source: {
-              uri: "https://picsum.photos/700",
-            },
-            onPress: () => {},
-            title: "Hike",
-          },
-          {
-            accessibilityLabel: "third-image",
-            source: {
-              uri: "https://picsum.photos/700",
-            },
-            onPress: () => {},
-            title: "Skiing",
-          },
-          {
-            accessibilityLabel: "fourth-image",
-            source: {
-              uri: "https://picsum.photos/700",
-            },
-            onPress: () => {},
-            title: "Meeting",
-          },
-        ]}
-      />
     </>
   );
 };

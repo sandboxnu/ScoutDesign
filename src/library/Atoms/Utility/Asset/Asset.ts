@@ -6,59 +6,62 @@ export type Dimensions = {
   height: number;
 };
 
-export type SizePresets = "micro" | "xs" | "s" | "m" | "l" | "xl";
+export type SizePresets = "fill" | "micro" | "xs" | "s" | "m" | "l" | "xl";
 
 export const mapRadius = (
   radius?: Radius,
-  size?: SizePresets | Dimensions | "fill"
+  size?: SizePresets | Dimensions
 ): number | undefined => {
   if (!radius) {
     return undefined;
   }
 
-  if (size) {
-    // If size is not a Dimension
-    if (size === "fill" && radius !== "circle" && radius !== "default") {
-      return theme.radii[radius];
+  // If a radius preset is passed to the function apply it
+  if (radius !== "circle" && radius !== "default") {
+    return theme.radii[radius];
+  }
+
+  // If size is a preset that evaluates to a number (not fill)
+  else if (typeof size === "string" && size !== "fill") {
+    if (radius === "default") {
+      return theme.radii[size];
+    } else if (radius === "circle") {
+      return theme.assetSizes[size];
     }
-    if (typeof size === "string" && size !== "fill") {
-      if (radius === "default") {
-        return theme.radii[size];
-      } else if (radius === "circle") {
-        return theme.assetSizes[size];
-      } else {
-        return theme.radii[radius];
-      }
-    }
-    // If size is type Dimensions or fill
-    else {
-      if (radius === "circle") {
-        if (size === "fill") {
-          return theme.radii.xl;
-        } else if (size.height === size.width) {
-          return size.height / 2;
-        } else {
-          return theme.radii.xl;
-        }
-      } else if (radius === "default") {
-        return theme.radii.xl;
-      } else {
-        return theme.radii[radius];
-      }
-    }
-  } else {
-    if (radius === "circle" || radius === "default") {
-      console.warn(
-        "You cannot pass 'circle' or 'default' if no size is specified."
-      );
-      return undefined;
+  }
+
+  // If size is not specified and a non-number radius preset is passed in
+  // throw an error
+  else if (!size) {
+    console.warn(
+      "You cannot pass 'circle' or 'default' if no size is specified."
+    );
+    return undefined;
+  }
+
+  // If size is type fill
+  else if (size === "fill") {
+    if (radius === "circle") {
+      return theme.radii.xl;
     } else {
-      return theme.radii[radius];
+      return theme.radii.m;
+    }
+  }
+
+  // If size is type Dimensions
+  else {
+    if (radius === "circle") {
+      if (size.height === size.width) {
+        return size.height / 2;
+      } else {
+        return theme.radii.xl;
+      }
+    } else {
+      return theme.radii.m;
     }
   }
 };
 
 export interface AssetProps {
-  size: SizePresets | Dimensions | "fill";
-  radius?: Radius;
+  size: SizePresets | Dimensions;
 }
