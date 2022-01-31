@@ -17,4 +17,5 @@ export { default as Stack } from "./Widgets/Stack/Stack";
 export { default as ImageTileGrid } from "./Widgets/ImageTileGrid/ImageTileGrid";
 
 // Form Fields
-export { default as TextInput } from "./Atoms/FormFields/TextInput/TextInput";
+export { default as TextInput } from "./Atoms/FormFields/TextInput/SimpleTextInput";
+export { default as ColorfulTextInput } from "./Atoms/FormFields/TextInput/ColorfulTextInput";

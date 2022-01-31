@@ -17,6 +17,7 @@ import {
   Modal,
   Stack,
   TextInput,
+  ColorfulTextInput,
 } from "../library";
 
 import {
@@ -224,7 +225,6 @@ const DesignSystem = () => {
                 valid={item?.valid}
                 disabled={item?.disabled}
                 error={item?.error}
-                type="basic"
                 noStyles
                 onValueChange={onValueChange}
                 {...rest}
@@ -233,6 +233,14 @@ const DesignSystem = () => {
           }}
         />
 
+        <ColorfulTextInput
+          placeholder="Kaleb Davenport"
+          valid={false}
+          // disabled={true}
+          error="hi"
+          noStyles
+          onValueChange={() => {}}
+        />
         <LineItem
           accessibilityLabel="basic-line-item"
           type="button"

@@ -15,7 +15,7 @@ import {
 
 import { Theme } from "../../../theme";
 
-type TextInputProps = RadiusProps &
+export type TextInputUtilityProps = RadiusProps &
   React.ComponentPropsWithRef<typeof RNTextInput> &
   BorderProps<Theme> &
   SpacingProps<Theme> &
@@ -24,16 +24,16 @@ type TextInputProps = RadiusProps &
 
 const restyleFunctions = [spacing, border, backgroundColor];
 
-const TextInputBase = forwardRef<RNTextInput, TextInputProps>(
+const TextInputUtility = forwardRef<RNTextInput, TextInputUtilityProps>(
   ({ ...rest }, ref) => {
     const props = useRestyle(restyleFunctions as any, rest);
     return <RNTextInput ref={ref} {...props} />;
   }
 );
 
-const TextInput = (props: TextInputProps) => {
+const TextInput = (props: TextInputUtilityProps) => {
   return (
-    <TextInputBase
+    <TextInputUtility
       borderTopLeftRadius={mapRadius(props?.topLeftRadius)}
       borderTopRightRadius={mapRadius(props?.topRightRadius)}
       borderBottomLeftRadius={mapRadius(props?.bottomLeftRadius)}
@@ -42,7 +42,7 @@ const TextInput = (props: TextInputProps) => {
       {...props}
     >
       {props.children}
-    </TextInputBase>
+    </TextInputUtility>
   );
 };
 

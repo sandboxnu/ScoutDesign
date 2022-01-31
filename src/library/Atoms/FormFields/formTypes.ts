@@ -5,6 +5,5 @@ export interface FormFieldStates {
 }
 
 export interface FormFieldProps extends FormFieldStates {
-  value?: string | number;
   onValueChange: (value: string | number) => void;
 }
