@@ -8,7 +8,10 @@ import { FormFieldProps } from "../formTypes";
 import { StackableProps } from "../../../Widgets/Stack/Stack";
 import theme from "../../../theme";
 
-export interface TextInputProps extends FormFieldProps, RNTextInputProps {
+export interface TextInputProps
+  extends FormFieldProps,
+    RNTextInputProps,
+    StackableProps {
   placeholder?: string;
   noStyles?: boolean;
 }

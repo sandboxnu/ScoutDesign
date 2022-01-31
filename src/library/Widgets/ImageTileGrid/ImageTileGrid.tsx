@@ -2,16 +2,15 @@ import { Dimensions } from "react-native";
 import Image, { ImageProps } from "../../Atoms/UI/Assets/Image/Image";
 import { Box, PressableProps, Spacing } from "../../Atoms/utility";
 
-export type TileProps = Omit<ImageProps, "size">;
-interface EveryTileProps extends PressableProps {
-  resizeMode?: "cover" | "contain" | "stretch" | "center";
-}
+export type TileProps = Omit<ImageProps, "size"> & {
+  id: string;
+};
 
 interface ImageTileGridProps {
   rows: number;
   padding: Spacing;
   tiles: TileProps[];
-  everyItemProps?: EveryTileProps;
+  everyItemProps?: PressableProps;
 }
 
 const mapToSmallerSpacing: { [key: string]: Spacing | undefined } = {
@@ -64,6 +63,7 @@ const ImageTileGrid = ({
       {tiles.map((imageProps, index) => {
         return (
           <Box
+            key={imageProps.id}
             width={size}
             height={size}
             padding={padding}

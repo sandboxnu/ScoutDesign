@@ -1,13 +1,14 @@
+import React from "react";
 import { Pressable, Box, StandardRadius, Color } from "../../Atoms/utility";
 import {
   FormFieldProps,
   FormFieldStates,
 } from "../../Atoms/FormFields/formTypes";
 
-import theme from "../../theme";
 import { IconPayload } from "../../../icons";
 
 export interface StackableProps {
+  key?: string;
   stackRadius?: StandardRadius;
   isStackTop?: boolean;
   isStackBottom?: boolean;
@@ -59,7 +60,7 @@ const Stack = ({
         const firstItem = index === 0;
         const lastItem = index === items.length - 1;
         return (
-          <>
+          <React.Fragment key={item.id}>
             {!firstItem && !item.disabled && !item?.error && (
               <Box backgroundColor={backgroundColor} height={1}>
                 <Box
@@ -77,7 +78,7 @@ const Stack = ({
               item={item}
               {...everyItemProps}
             />
-          </>
+          </React.Fragment>
         );
       })}
     </Pressable>

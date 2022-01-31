@@ -213,14 +213,13 @@ const DesignSystem = () => {
               text: "Password",
             },
             {
-              id: "58694a0f-3da1-471f-bd96-145571e29d72",
+              id: "58694a0f-3da1-471f-bd96-145571e29d73",
               text: "Confirm Password",
             },
           ]}
           RenderItem={({ item, onValueChange, ...rest }) => {
             return (
               <TextInput
-                key={item.id}
                 placeholder={item.text}
                 valid={item?.valid}
                 disabled={item?.disabled}
@@ -324,6 +323,7 @@ const DesignSystem = () => {
           padding="xs"
           tiles={[
             {
+              id: "1",
               accessibilityLabel: "first-image",
               source: {
                 uri: "https://picsum.photos/700",
@@ -332,6 +332,7 @@ const DesignSystem = () => {
               title: "Campout",
             },
             {
+              id: "2",
               accessibilityLabel: "second-image",
               source: {
                 uri: "https://picsum.photos/700",
@@ -340,6 +341,7 @@ const DesignSystem = () => {
               title: "Hike",
             },
             {
+              id: "3",
               accessibilityLabel: "third-image",
               source: {
                 uri: "https://picsum.photos/700",
@@ -348,6 +350,7 @@ const DesignSystem = () => {
               title: "Skiing",
             },
             {
+              id: "4",
               accessibilityLabel: "fourth-image",
               source: {
                 uri: "https://picsum.photos/700",
@@ -356,6 +359,7 @@ const DesignSystem = () => {
               title: "Meeting",
             },
             {
+              id: "5",
               accessibilityLabel: "third-image",
               source: {
                 uri: "https://picsum.photos/700",
@@ -364,6 +368,7 @@ const DesignSystem = () => {
               title: "Backpacking",
             },
             {
+              id: "6",
               accessibilityLabel: "fourth-image",
               source: {
                 uri: "https://picsum.photos/700",
