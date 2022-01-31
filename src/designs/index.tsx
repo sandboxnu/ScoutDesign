@@ -364,7 +364,7 @@ const DesignSystem = () => {
               title: "Ice Climbing",
             },
           ]}
-          everyItemProps={{ radius: "m" }}
+          everyItemProps={{ radius: "xs" }}
         />
       </ScrollView>
     </>
