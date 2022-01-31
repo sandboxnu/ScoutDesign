@@ -2,11 +2,13 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import theme from "../../../theme";
 import {
+  AssetSizePreset,
+  Color,
   mapRadius,
   Pressable,
   PressableProps,
+  Spacing,
   StandardRadius,
 } from "../../utility";
 import Icon from "../Assets/Icon/Icon";
@@ -16,19 +18,19 @@ import { IconPayload } from "../../../../icons";
 export interface ButtonProps extends PressableProps {
   accessibilityLabel: string;
   text?: string;
-  textColor?: keyof typeof theme.colors;
-  backgroundColor?: keyof typeof theme.colors | "gradient";
+  textColor?: Color;
+  backgroundColor?: Color | "gradient";
   icon?: IconPayload;
 }
 
 type Props = ButtonProps & {
   alignSelf?: "flex-start";
-  paddingVertical: keyof typeof theme.spacing;
-  paddingHorizontal: keyof typeof theme.spacing;
+  paddingVertical: Spacing;
+  paddingHorizontal: Spacing;
   borderRadius: StandardRadius;
-  textPadding?: keyof typeof theme.spacing;
-  iconPadding: keyof typeof theme.spacing;
-  iconSize: keyof typeof theme.assetSizes;
+  textPadding?: Spacing;
+  iconPadding: Spacing;
+  iconSize: AssetSizePreset;
   children?: any;
 };
 

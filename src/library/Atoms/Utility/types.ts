@@ -23,5 +23,6 @@ export interface RadiusProps {
 
 export type Color = keyof typeof theme.colors;
 export type Spacing = keyof typeof theme.spacing;
+export type AssetSizePreset = keyof typeof theme.assetSizes;
 
 export type Modify<T, R> = Omit<T, keyof R> & R;

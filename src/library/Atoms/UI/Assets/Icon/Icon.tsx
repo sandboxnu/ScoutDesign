@@ -4,14 +4,15 @@ import {
   SizeProps,
   PressableProps,
   mapRadius,
+  Color,
 } from "../../../utility";
 import { SpacingProps } from "@shopify/restyle";
 import { IconPayload } from "../../../../../icons";
 
 interface IconProps extends SizeProps, PressableProps {
   icon: IconPayload;
-  color: keyof typeof theme.colors;
-  backgroundColor?: keyof typeof theme.colors;
+  color: Color;
+  backgroundColor?: Color;
 }
 
 type Props = IconProps & SpacingProps<Theme>;

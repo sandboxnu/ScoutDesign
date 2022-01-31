@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 import theme from "../../theme";
-import { Box } from "../../Atoms/utility";
+import { Box, Color, Spacing } from "../../Atoms/utility";
 import Text, { TextAlignmentWithinContainer } from "../../Atoms/UI/Text/Text";
 import Icon from "../../Atoms/UI/Assets/Icon/Icon";
 import { upCaret, downCaret } from "../../../icons";
@@ -17,7 +17,7 @@ const LineItemToggleIcon = ({ open }: { open: boolean }) => {
 };
 
 type LineItemHeadingProps = {
-  color?: keyof typeof theme.colors;
+  color?: Color;
   weight?: "medium" | "light";
   children: React.ReactNode;
 };
@@ -25,14 +25,14 @@ type LineItemHeadingProps = {
 interface Props extends PressableProps, StackableProps {
   accessibilityLabel: string;
   type: "button" | "static" | "simpleRow" | "accordion" | "formField";
-  borderColor?: keyof typeof theme.colors;
+  borderColor?: Color;
   topBorder?: boolean;
   bottomBorder?: boolean;
-  bottomPadding?: keyof typeof theme.spacing;
+  bottomPadding?: Spacing;
   leftComponent?: React.ReactNode;
   rightComponent?: React.ReactNode;
   accordionContent?: React.ReactNode;
-  backgroundColor?: keyof typeof theme.colors;
+  backgroundColor?: Color;
   children?: any;
   childrenAlignment?: TextAlignmentWithinContainer;
 }

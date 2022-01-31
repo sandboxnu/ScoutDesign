@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import theme from "../../../theme";
-import { Pressable, PressableProps } from "../../utility";
+import { Color, Pressable, PressableProps } from "../../utility";
 import { IconPayload } from "../../../../icons";
 import Icon from "../Assets/Icon/Icon";
 import Text from "../Text/Text";
@@ -12,7 +12,7 @@ interface BadgeProps extends PressableProps {
   accessibilityLabel: string;
   text: string;
   icon?: IconPayload;
-  color: "gradient" | keyof typeof theme.colors;
+  color: "gradient" | Color;
   children?: React.ReactNode;
 }
 

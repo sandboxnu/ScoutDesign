@@ -3,13 +3,18 @@ import { Animated, Easing, TouchableOpacity, View } from "react-native";
 import theme from "../../../theme";
 import { IconPayload } from "../../../../icons";
 import Icon from "../Assets/Icon/Icon";
-import { Floatable, PressableProps, FloatableProps } from "../../utility";
+import {
+  Floatable,
+  PressableProps,
+  FloatableProps,
+  Color,
+} from "../../utility";
 
 interface CircleButtonProps extends PressableProps, FloatableProps {
   accessibilityLabel: string;
   icon: IconPayload;
   onPress: () => void;
-  backgroundColor?: keyof typeof theme.colors;
+  backgroundColor?: Color;
   animated?: boolean;
 }
 

@@ -1,6 +1,4 @@
-import Pressable from "../../Atoms/utility/Pressable/Pressable";
-import Box from "../../Atoms/utility/Box/Box";
-import { StandardRadius } from "../../Atoms/utility/types";
+import { Pressable, Box, StandardRadius, Color } from "../../Atoms/utility";
 import {
   FormFieldProps,
   FormFieldStates,
@@ -24,16 +22,16 @@ interface StackDataItem extends FormFieldStates {
 }
 
 interface EveryStackItemProps extends FormFieldProps {
-  textColor?: keyof typeof theme.colors;
+  textColor?: Color;
   leftComponent?: React.ReactNode;
-  placeholderColor?: keyof typeof theme.colors;
+  placeholderColor?: Color;
   onPress?: () => void;
 }
 
 type StackProps = {
   accessibilityLabel: string;
-  borderColor?: keyof typeof theme.colors;
-  backgroundColor?: keyof typeof theme.colors;
+  borderColor?: Color;
+  backgroundColor?: Color;
   radius: StandardRadius | "none";
   RenderItem: React.ElementType;
   type: "Pressable" | "FormField";
