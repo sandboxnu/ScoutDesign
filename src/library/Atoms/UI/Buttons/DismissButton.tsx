@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../Assets/Icon/Icon";
 import { close, IconPayload } from "../../../../icons";
-import { Floatable, FloatableProps, SizePresets } from "../../utility";
+import { Floatable, FloatableProps } from "../../utility";
 
 export interface DismissableProps {
   dismissComponent?: IconPayload;

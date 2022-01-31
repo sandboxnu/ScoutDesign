@@ -2,8 +2,8 @@ import { FlexAlignType } from "react-native";
 import { createTheme } from "@shopify/restyle";
 
 const palette = {
-  sunglowYellow: "#FFCC00",
-  mustardYellow: "#FFD633",
+  saffronYellow: "#F4C006",
+  jonquilYellow: "#F5D03D",
   crayolaYellow: "#FFEB99",
   darkOrange: "#E98D01",
   orangePeel: "#FDA521",
@@ -18,7 +18,7 @@ const palette = {
   drabBrown: "#7D6012",
   lemonCurryBrown: "#C9A326",
   darkGreen: "#288555",
-  shamrockGreen: "#34A86C",
+  mediumGreen: "#34A86C",
   aquamarine: "#74E7AA",
   teaGreen: "#DBFBDF",
   greenGlow: "#F4FBF4",
@@ -27,7 +27,7 @@ const palette = {
 
   darkGrey: "#3D444D",
   slateGrey: "#738487",
-  morningGrey: "#9BB0AE",
+  morningGrey: "#90A7A5",
   mediumGrey: "#B3CCC8",
   mintGrey: "#DBE6E1",
   lightMintGrey: "#F4F6F5",
@@ -51,35 +51,36 @@ const alignments: Alignments = {
 
 const theme = createTheme({
   colors: {
-    brandActionLight: palette.aquamarine,
-    brandAction: palette.shamrockGreen,
-    brandActionDark: palette.darkGreen,
+    brandPrimaryLight: palette.aquamarine,
+    brandPrimary: palette.mediumGreen,
+    brandPrimaryDark: palette.darkGreen,
 
-    brandInactionLight: palette.lemonCurryBrown,
-    brandInaction: palette.drabBrown,
-    brandInactionDark: palette.darkOliveBrown,
+    informationLight: palette.lemonCurryBrown,
+    information: palette.drabBrown,
+    informationDark: palette.darkOliveBrown,
 
-    questionLight: palette.lightPeach,
-    question: palette.orangePeel,
-    questionDark: palette.darkOrange,
+    brandSecondaryLight: palette.lightPeach,
+    brandSecondary: palette.orangePeel,
+    brandSecondaryDark: palette.darkOrange,
 
-    answerLight: palette.tuftsBlue,
-    answer: palette.brightNavy,
-    answerDark: palette.airforceBlue,
+    interactiveLight: palette.tuftsBlue,
+    interactive: palette.brightNavy,
+    interactiveDark: palette.airforceBlue,
 
     dangerLight: palette.mauvelous,
     danger: palette.mediumRed,
     dangerDark: palette.darkRed,
 
     urgentLight: palette.crayolaYellow,
-    urgent: palette.mustardYellow,
-    urgentDark: palette.sunglowYellow,
+    urgent: palette.jonquilYellow,
+    urgentDark: palette.saffronYellow,
 
     black: palette.black,
 
     darkGrey: palette.darkGrey,
     slateGrey: palette.slateGrey,
     mediumGrey: palette.mediumGrey,
+    morningGrey: palette.morningGrey,
     mintGrey: palette.mintGrey,
     lightMintGrey: palette.lightMintGrey,
     lightRedGrey: palette.lightRedGrey,

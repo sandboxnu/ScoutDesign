@@ -2,10 +2,10 @@ import React from "react";
 
 import ButtonBase, { ButtonProps } from "./ButtonBase";
 
-import { Floatable, FloatableProps } from "../../utility";
 import Text from "../Text/Text";
+import { Floatable, FloatableProps } from "../../utility";
 
-type Props = ButtonProps & FloatableProps & {};
+type Props = ButtonProps & FloatableProps;
 
 const LargeFloatingButton = ({
   text,

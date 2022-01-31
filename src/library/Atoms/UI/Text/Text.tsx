@@ -2,7 +2,7 @@ import React from "react";
 import { createText, TextProps } from "@shopify/restyle";
 import { Theme } from "../../../theme";
 
-const Text = createText<Theme>();
+const TextUtility = createText<Theme>();
 
 export type TextAlignmentWithinContainer = "right" | "center" | "left";
 
@@ -19,25 +19,21 @@ type presets =
   | "button"
   | "micro";
 
-type shadows = "strong" | "medium" | "subtle";
-
-type textProps = React.ComponentProps<typeof Text> & {
+type Props = React.ComponentProps<typeof TextUtility> & {
   accessibilityLabel?: string;
   size?: sizes;
   weight?: weights;
   preset?: presets;
-  shadow?: shadows;
 } & TextProps<Theme>;
 
-const ScoutText = ({
+const Text = ({
   accessibilityLabel,
   size = "m",
   weight = "regular",
   preset,
-  shadow,
   children,
   ...rest
-}: textProps) => {
+}: Props) => {
   return (
     <Text
       variant={preset ? preset : `${size}-${weight}`}
@@ -49,4 +45,4 @@ const ScoutText = ({
   );
 };
 
-export default ScoutText;
+export default Text;

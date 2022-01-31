@@ -2,7 +2,7 @@ import React from "react";
 import { Pressable, Box, StandardRadius, Color } from "../../Atoms/utility";
 import {
   FormFieldProps,
-  FormFieldStates,
+  InputFieldStates,
 } from "../../Atoms/FormFields/formTypes";
 
 import { IconPayload } from "../../../icons";
@@ -14,7 +14,7 @@ export interface StackableProps {
   isStackBottom?: boolean;
 }
 
-interface StackDataItem extends FormFieldStates {
+interface StackItemSchema extends InputFieldStates {
   id: string;
   text: string;
   icon?: IconPayload;
@@ -37,7 +37,7 @@ type StackProps = {
   RenderItem: React.ElementType;
   type: "Pressable" | "FormField";
   everyItemProps: EveryStackItemProps;
-  items: StackDataItem[];
+  items: StackItemSchema[];
 };
 
 const Stack = ({
@@ -56,7 +56,7 @@ const Stack = ({
       borderColor={borderColor}
       radius={radius === "none" ? undefined : radius}
     >
-      {items.map((item: StackDataItem, index: number) => {
+      {items.map((item: StackItemSchema, index: number) => {
         const firstItem = index === 0;
         const lastItem = index === items.length - 1;
         return (

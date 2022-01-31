@@ -7,6 +7,7 @@ import {
   Color,
 } from "../../../utility";
 import { SpacingProps } from "@shopify/restyle";
+
 import { IconPayload } from "../../../../../icons";
 
 interface IconProps extends SizeProps, PressableProps {

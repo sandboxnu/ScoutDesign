@@ -162,7 +162,7 @@ const DesignSystem = () => {
         <CircleButton
           accessibilityLabel="add-icon-circle-button"
           icon={plusThin}
-          backgroundColor="question"
+          backgroundColor="brandSecondary"
           animated
           onPress={() => {}}
           corner="bottom-right"
@@ -270,7 +270,7 @@ const DesignSystem = () => {
               accessibilityLabel="campout-solid-badge"
               text="Campout"
               icon={bonfire}
-              color="questionDark"
+              color="brandSecondaryDark"
             />
           }
           onPress={() => {}}

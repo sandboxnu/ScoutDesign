@@ -1,12 +1,14 @@
 import React, { Children } from "react";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-import { Box, mapRadius, Pressable, PressableProps } from "../../Atoms/utility";
-import Text, { TextAlignmentWithinContainer } from "../../Atoms/UI/Text/Text";
-import LineItem from "../../Widgets/LineItem/LineItem";
 import DismissButton, {
   DismissableProps,
 } from "../../Atoms/UI/Buttons/DismissButton";
+
+import Text, { TextAlignmentWithinContainer } from "../../Atoms/UI/Text/Text";
+import LineItem from "../../Widgets/LineItem/LineItem";
+
+import { Box, Pressable, PressableProps } from "../../Atoms/utility";
 
 import { Theme } from "../../theme";
 import { BackgroundColorProps } from "@shopify/restyle";

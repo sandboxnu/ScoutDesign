@@ -1,13 +1,13 @@
 import React from "react";
-import { LinearGradient } from "expo-linear-gradient";
-import { SpacingProps } from "@shopify/restyle";
-import theme, { Theme } from "../../../../theme";
-
 import {
   Image as RNImage,
   ImageSourcePropType,
   StyleSheet,
 } from "react-native";
+
+import { LinearGradient } from "expo-linear-gradient";
+import { SpacingProps } from "@shopify/restyle";
+import theme, { Theme } from "../../../../theme";
 
 import {
   Pressable,

@@ -20,7 +20,7 @@ interface CircleButtonProps extends PressableProps, FloatableProps {
 
 const CircleButton = ({
   accessibilityLabel,
-  backgroundColor = "brandAction",
+  backgroundColor = "brandPrimary",
   icon,
   onPress,
   animated,

@@ -39,7 +39,7 @@ const Button = ({
   onPress,
   text,
   icon,
-  backgroundColor = "brandAction",
+  backgroundColor = "brandPrimary",
   textColor = "white",
   borderRadius,
   textPadding,
@@ -49,7 +49,7 @@ const Button = ({
   ...props
 }: Props) => {
   const gradient = backgroundColor === "gradient";
-  if (gradient) textColor = "brandActionDark";
+  if (gradient) textColor = "brandPrimaryDark";
 
   return (
     <Pressable

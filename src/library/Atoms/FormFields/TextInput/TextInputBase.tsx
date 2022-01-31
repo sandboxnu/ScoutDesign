@@ -53,7 +53,7 @@ const BaseTextInput = ({
       paddingVertical="m"
       paddingHorizontal="l"
       onChangeText={onValueChange}
-      placeholderTextColor="#90A7A5"
+      placeholderTextColor={theme.colors.morningGrey}
       editable={!disabled}
       style={styles.input}
     />

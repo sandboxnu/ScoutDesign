@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import theme from "../../../theme";
 import { Color, Pressable, PressableProps } from "../../utility";
 import { IconPayload } from "../../../../icons";
 import Icon from "../Assets/Icon/Icon";
@@ -52,13 +51,13 @@ const Badge = ({
       {!!icon && icon.isValid() && (
         <Icon
           icon={icon}
-          color={color === "gradient" ? "brandActionDark" : "white"}
+          color={color === "gradient" ? "brandPrimaryDark" : "white"}
           size="xs"
         />
       )}
       <Text
         accessibilityLabel={text}
-        color={color === "gradient" ? "brandActionDark" : "white"}
+        color={color === "gradient" ? "brandPrimaryDark" : "white"}
         preset="micro"
         paddingLeft={icon ? "xs" : undefined}
       >

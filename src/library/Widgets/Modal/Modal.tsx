@@ -1,17 +1,28 @@
 import { Platform, KeyboardAvoidingView, Dimensions } from "react-native";
-import { CircleButton, DismissButton, Text } from "../../Atoms/UI";
+import CircleButton from "../../Atoms/UI/Buttons/CircleButton";
+import DismissButton from "../../Atoms/UI/Buttons/DismissButton";
+import Text from "../../Atoms/UI/Text/Text";
 import LineItem from "../LineItem/LineItem";
-import { Box, mapRadius } from "../../Atoms/utility";
+import { Box, Color, mapRadius } from "../../Atoms/utility";
 import { forwardArrow } from "../../../icons";
+import { SimpleFormStates } from "../../Atoms/FormFields/formTypes";
 
-interface ModalProps {
+interface ModalProps extends SimpleFormStates {
   escape: () => void;
   next: () => void;
+  backgroundColor?: Color;
   title?: string;
   children: any;
 }
 
-const Modal = ({ escape, next, title, children }: ModalProps) => {
+const Modal = ({
+  escape,
+  next,
+  backgroundColor = "brandPrimary",
+  title,
+  valid,
+  children,
+}: ModalProps) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -36,7 +47,7 @@ const Modal = ({ escape, next, title, children }: ModalProps) => {
         <LineItem
           accessibilityLabel="modal-header"
           bottomBorder={true}
-          backgroundColor="brandAction"
+          backgroundColor={backgroundColor}
           type="simpleRow"
           topLeftRadius="m"
           topRightRadius="m"
@@ -53,21 +64,16 @@ const Modal = ({ escape, next, title, children }: ModalProps) => {
         <Box paddingHorizontal="l" paddingVertical="m">
           {children}
         </Box>
-        <CircleButton
-          accessibilityLabel="next"
-          icon={forwardArrow}
-          onPress={next}
-          animated
-          corner="bottom-right"
-          distanceFromCorner="s"
-        />
-        {/* {!invalid ? (
+        {valid ? (
           <CircleButton
             accessibilityLabel="next"
             icon={forwardArrow}
             onPress={next}
+            animated
+            corner="bottom-right"
+            distanceFromCorner="s"
           />
-        ) : null} */}
+        ) : undefined}
       </Box>
     </KeyboardAvoidingView>
   );

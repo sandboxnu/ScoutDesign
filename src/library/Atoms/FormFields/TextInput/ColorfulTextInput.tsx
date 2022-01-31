@@ -9,7 +9,7 @@ const ColorfulTextInput = ({ disabled, error, ...props }: Props) => {
       borderWidth={0.5}
       borderBottomWidth={4}
       borderBottomColor={
-        disabled ? "mediumGrey" : error ? "danger" : "brandAction"
+        disabled ? "mediumGrey" : error ? "danger" : "brandPrimary"
       }
       borderBottomLeftRadius={0}
       borderBottomRightRadius={0}
