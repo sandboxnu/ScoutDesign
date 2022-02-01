@@ -34,7 +34,7 @@ import { useModal } from "../library/Widgets/Modal/useModal";
 // There is currently no way to move an image around under the clipping mask. It's centered and that's the only option. If anyone knows how to move the image so I could pass "bottom center" and have the image anchored at the bottom and center that would be great, hmu
 
 const DesignSystem = () => {
-  const { next, openModal, visible, escape, Modal } = useModal({
+  const { modalProps, openModal, Modal } = useModal({
     onNext: () => {},
   });
 
@@ -91,9 +91,7 @@ const DesignSystem = () => {
       />
 
       <Modal
-        visible={visible}
-        onEscape={escape}
-        onNext={next}
+        {...modalProps}
         backgroundColor="brandPrimary"
         valid
         title="This is a title."
