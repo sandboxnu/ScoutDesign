@@ -1,4 +1,11 @@
-import { Platform, KeyboardAvoidingView, Dimensions } from "react-native";
+import React from "react";
+import {
+  Platform,
+  KeyboardAvoidingView,
+  Dimensions,
+  Modal as RNModal,
+  Pressable,
+} from "react-native";
 import CircleButton from "../../Atoms/UI/Buttons/CircleButton";
 import DismissButton from "../../Atoms/UI/Buttons/DismissButton";
 import Text from "../../Atoms/UI/Text/Text";
@@ -7,17 +14,19 @@ import { Box, Color, mapRadius } from "../../Atoms/utility";
 import { forwardArrow } from "../../../icons";
 import { SimpleFormStates } from "../../Atoms/FormFields/formTypes";
 
-interface ModalProps extends SimpleFormStates {
-  escape: () => void;
-  next: () => void;
+export interface ModalProps extends SimpleFormStates {
+  onEscape: () => void;
+  onNext?: () => void;
+  openModal: () => void;
   backgroundColor?: Color;
   title?: string;
-  children: any;
+  visible: boolean;
+  children?: any;
 }
 
-const Modal = ({
-  escape,
-  next,
+const ModalBase = ({
+  onEscape,
+  onNext,
   backgroundColor = "brandPrimary",
   title,
   valid,
@@ -40,7 +49,7 @@ const Modal = ({
         backgroundColor="white"
       >
         <DismissButton
-          onDismiss={escape}
+          onDismiss={onEscape}
           corner="top-right"
           distanceFromCorner="edge"
         />
@@ -64,11 +73,11 @@ const Modal = ({
         <Box paddingHorizontal="l" paddingVertical="m">
           {children}
         </Box>
-        {valid ? (
+        {valid && onNext ? (
           <CircleButton
             accessibilityLabel="next"
             icon={forwardArrow}
-            onPress={next}
+            onPress={onNext}
             animated
             corner="bottom-right"
             distanceFromCorner="s"
@@ -76,6 +85,16 @@ const Modal = ({
         ) : undefined}
       </Box>
     </KeyboardAvoidingView>
+  );
+};
+
+const Modal = ({ visible, children, ...props }: ModalProps) => {
+  return (
+    <RNModal animationType="fade" transparent={true} visible={visible}>
+      <ModalBase visible={visible} {...props}>
+        {children}
+      </ModalBase>
+    </RNModal>
   );
 };
 

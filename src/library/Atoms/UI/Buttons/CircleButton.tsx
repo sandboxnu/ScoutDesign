@@ -31,8 +31,8 @@ const CircleButton = ({
 
   let scaleValue = new Animated.Value(0);
   const cardScale = scaleValue.interpolate({
-    inputRange: [0, 0.25, 0.5, 0.999, 1],
-    outputRange: [1, 3, 25, 45, 1],
+    inputRange: [0, 0.25, 0.5, 0.99, 1],
+    outputRange: [1, 3, 23, 45, 1],
   });
 
   return (
@@ -60,7 +60,7 @@ const CircleButton = ({
             animated &&
               Animated.timing(scaleValue, {
                 toValue: 1,
-                duration: 700,
+                duration: 500,
                 easing: Easing.linear,
                 useNativeDriver: true,
               }).start();

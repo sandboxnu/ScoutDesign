@@ -50,13 +50,14 @@ const Button = ({
 }: Props) => {
   const gradient = backgroundColor === "gradient";
   if (gradient) textColor = "brandPrimaryDark";
+  const bgColor = gradient ? undefined : backgroundColor;
 
   return (
     <Pressable
       accessibilityLabel={accessibilityLabel}
       onPress={onPress}
       marginVertical="xs"
-      backgroundColor={gradient ? undefined : backgroundColor}
+      backgroundColor={bgColor}
       alignItems="center"
       justifyContent="center"
       flexDirection="row"

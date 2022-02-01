@@ -35,13 +35,13 @@ const Text = ({
   ...rest
 }: Props) => {
   return (
-    <Text
+    <TextUtility
       variant={preset ? preset : `${size}-${weight}`}
       nativeID={accessibilityLabel}
       {...rest}
     >
       {children}
-    </Text>
+    </TextUtility>
   );
 };
 
