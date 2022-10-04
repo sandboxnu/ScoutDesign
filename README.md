@@ -1,0 +1,1 @@
+This repository is not up to date and the ScoutTrek Design System is within the ScoutTrek-Frontend repository. This repository exists for organization -- design related tickets (Figma, etc) will be stored here (and visible on the ScoutTrek Kanban board). 
